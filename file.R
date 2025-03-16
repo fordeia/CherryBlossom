@@ -1,4 +1,4 @@
-CBloom <-read.table("cherry_blossom.txt",header =TRUE,sep="\t", fill = TRUE)
+CBloom <-read.table("cherryBlossomData.txt",header =TRUE,sep="\t", fill = TRUE)
 
 #Dropping unwanted variables
 CBloom<-CBloom[ , !(names(CBloom) %in% "X")]
