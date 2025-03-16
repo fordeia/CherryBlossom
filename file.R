@@ -4,6 +4,6 @@ CBloom <-read.table("cherryBlossomData.txt",header =TRUE,sep="\t", fill = TRUE)
 CBloom<-CBloom[ , !(names(CBloom) %in% "X")]
 
 # Create a new variable by summing two existing variables
-    CBloom$OceTemp <- 2*CBloom$El_Nino+CBloom$La_Nina
+    CBloom$OceTemp <- 2*CBloom$El.Nino+CBloom$La.Nina
 
 head(CBloom)
