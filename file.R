@@ -12,6 +12,7 @@ CBloom4_24 <-read.table("Cherryblossom_2004-2024.txt",header =TRUE,sep="\t", fil
 
 #Dropping rows with NA
 CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
+head(CBloom4_24)
 
 #Bootstrap sampling
 
