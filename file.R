@@ -23,3 +23,9 @@ head(bootdataCBloom4_24)
 nrow(bootdataCBloom4_24)
 str(bootdataCBloom4_24)
 
+set.seed(25)
+CBloom4_24.rgBoot <- randomForest(PEAK ~ ., data=bootdataCBloom4_24, importance=TRUE,
+                        proximity=TRUE)
+
+sqrt(sum((CBloom4_24.rgBoot$predicted - bootdataCBloom4_24$PEAK)^2) / nrow(bootdataCBloom4_24))
+
