@@ -14,5 +14,5 @@ set.seed(1237)
 CBloom4_24.rg <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE,
                         proximity=TRUE)
 
-sqrt(sum((CBloom4_24.rg$predicted - CBloom4_24$PEAK)^2) / nrow(iris))
+sqrt(sum((CBloom4_24.rg$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 
