@@ -1,7 +1,7 @@
 CBloom4_24 <-read.table("Cherryblossom_2004-2024.txt",header =TRUE,sep="\t", fill = TRUE)
 
 #Dropping unwanted variables
-CBloom4_24<-CBloom4_24[ , !((names(CBloom4_24) %in% "YEAR"), (names(CBloom4_24) %in% "FEB.HIGH"))]
+CBloom4_24<-CBloom4_24[ , -c("YEAR")]
 
 # Create a new variable by summing two existing variables
     #CBloom$OceTemp <- 2*CBloom$El.Nino+CBloom$La.Nina
