@@ -16,3 +16,10 @@ CBloom4_24.rg <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE,
 
 sqrt(sum((CBloom4_24.rg$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 
+set.seed(25)
+bootdataCBloom4_24=CBloom4_24[sample(nrow(CBloom4_24), 1000, replace=TRUE), ]
+
+head(bootdataCBloom4_24)
+nrow(bootdataCBloom4_24)
+str(bootdataCBloom4_24)
+
