@@ -23,9 +23,18 @@ head(bootdataCBloom4_24)
 nrow(bootdataCBloom4_24)
 str(bootdataCBloom4_24)
 
+#Splitting the data 70:30 
 set.seed(25)
-CBloom4_24.rgBoot <- randomForest(PEAK ~ ., data=bootdataCBloom4_24, importance=TRUE,
+samp <- sample(nrow(bootdataCBloom4_24), 0.7 * nrow(bootdataCBloom4_24))
+train <- Indta[samp, ]
+nrow(train)
+test <- Indta[-samp, ]
+nrow(test)
+
+
+set.seed(25)
+CBloom4_24.rgBoot <- randomForest(PEAK ~ ., data=train, importance=TRUE,
                         proximity=TRUE)
 
-sqrt(sum((CBloom4_24.rgBoot$predicted - bootdataCBloom4_24$PEAK)^2) / nrow(bootdataCBloom4_24))
+sqrt(sum((CBloom4_24.rgBoot$predicted - train$PEAK)^2) / nrow(train))
 
