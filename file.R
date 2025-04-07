@@ -26,9 +26,9 @@ str(bootdataCBloom4_24)
 #Splitting the data 70:30 
 set.seed(25)
 samp <- sample(nrow(bootdataCBloom4_24), 0.7 * nrow(bootdataCBloom4_24))
-train <- Indta[samp, ]
+train <- bootdataCBloom4_24[samp, ]
 nrow(train)
-test <- Indta[-samp, ]
+test <- bootdataCBloom4_24[-samp, ]
 nrow(test)
 
 
