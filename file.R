@@ -38,6 +38,7 @@ test <- bootdataCBloom4_24[-samp, ]
 nrow(test)
 
 #Creating excel file to use in Python
+library(openxlsx)
 write.xlsx(bootdataCBloom4_24, 'C:/Users/fordeia/CherryBlossom/bootdataCBloom4_24.xlsx')
 write.xlsx(train, 'C:/Users/fordeia/CherryBlossom/trainCB.xlsx')
 write.xlsx(test, 'C:/Users/fordeia/CherryBlossom/testCB.xlsx')
