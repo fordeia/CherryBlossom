@@ -44,3 +44,8 @@ CBloom4_24.rgBoot <- randomForest(PEAK ~ ., data=train, importance=TRUE,
 
 sqrt(sum((CBloom4_24.rgBoot$predicted - train$PEAK)^2) / nrow(train))
 
+#Extracting feature importance
+
+importance(CBloom4_24.rgBoot)
+importance(CBloom4_24.rgBoot, type=1)
+
