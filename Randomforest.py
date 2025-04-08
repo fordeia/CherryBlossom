@@ -11,9 +11,9 @@ import matplotlib.pyplot as plt
 random.seed(41)
 
 #loading datasets
-DataTot = pd.read_excel(r"C:\Users\fordeia\IndCoxInfStudy\IndtaRFPython.xlsx")
-data = pd.read_excel(r"C:\Users\fordeia\IndCoxInfStudy\trainRFPython.xlsx")
-Data = pd.read_excel(r"C:\Users\fordeia\IndCoxInfStudy\testRFPython.xlsx")
+DataTot = pd.read_excel(r"C:/Users/fordeia/CherryBlossom/bootdataCBloom4_24.xlsx")
+data = pd.read_excel(r"C:/Users/fordeia/CherryBlossom/trainCB.xlsx")
+Data = pd.read_excel(r"C:/Users/fordeia/CherryBlossom/testCB.xlsx")
 
 # Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
