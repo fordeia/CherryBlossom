@@ -21,6 +21,7 @@ rf_regressor.fit(X_train, y_train)
 
 # Make predictions on the test data
 X_test = Data.drop(columns=['PEAK'])
+y_test = data['PEAK']
 y_pred = rf_regressor.predict(X_test)
 
 # Evaluate the model by calculating Mean Squared Error (MSE)
