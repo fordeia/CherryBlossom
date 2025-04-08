@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 
 # Load the cherry blossom dataset
 
-# Set the seed value
-
 #loading datasets
 DataTot = pd.read_excel(r"C:/Users/fordeia/CherryBlossom/bootdataCBloom4_24.xlsx")
 data = pd.read_excel(r"C:/Users/fordeia/CherryBlossom/trainCB.xlsx")
