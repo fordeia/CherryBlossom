@@ -15,14 +15,16 @@ DataTot = pd.read_excel(r"C:/Users/fordeia/CherryBlossom/bootdataCBloom4_24.xlsx
 data = pd.read_excel(r"C:/Users/fordeia/CherryBlossom/trainCB.xlsx")
 Data = pd.read_excel(r"C:/Users/fordeia/CherryBlossom/testCB.xlsx")
 
-# Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+#Training the model
+X_train = data.drop(columns=['PEAK'])
+y_train = data['PEAK']
 
 # Create and train a Random Forest Regression model
 rf_regressor = RandomForestRegressor(n_estimators=100, random_state=42)
 rf_regressor.fit(X_train, y_train)
 
 # Make predictions on the test data
+X_test = Data.drop(columns=['PEAK'])
 y_pred = rf_regressor.predict(X_test)
 
 # Evaluate the model by calculating Mean Squared Error (MSE)
