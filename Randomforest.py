@@ -5,10 +5,15 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 
-# Load the diabetes dataset
-data = load_diabetes()
-X = data.data
-y = data.target
+# Load the cherry blossom dataset
+
+# Set the seed value
+random.seed(41)
+
+#loading datasets
+DataTot = pd.read_excel(r"C:\Users\fordeia\IndCoxInfStudy\IndtaRFPython.xlsx")
+data = pd.read_excel(r"C:\Users\fordeia\IndCoxInfStudy\trainRFPython.xlsx")
+Data = pd.read_excel(r"C:\Users\fordeia\IndCoxInfStudy\testRFPython.xlsx")
 
 # Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
