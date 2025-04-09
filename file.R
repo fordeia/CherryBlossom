@@ -56,7 +56,7 @@ sqrt(sum((CBloom4_24.rgBoot$predicted - train$PEAK)^2) / nrow(train))
 importance(CBloom4_24.rgBoot)
 importance(CBloom4_24.rgBoot, type=1)
 
-## Visualize variable importance ----------------------------------------------
+#7. Visualize variable importance ----------------------------------------------
 
 # Get variable importance from the model fit
 ImpData <- as.data.frame(importance(CBloom4_24.rgBoot))
