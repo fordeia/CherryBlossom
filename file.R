@@ -1,5 +1,6 @@
 #1. Loading Packages
 library(randomForest)
+library(ggplot2)
 
 #2. Loading Data
 CBloom4_24 <-read.table("Cherryblossom_2004-2024.txt",header =TRUE,sep="\t", fill = TRUE)
@@ -54,4 +55,22 @@ sqrt(sum((CBloom4_24.rgBoot$predicted - train$PEAK)^2) / nrow(train))
 
 importance(CBloom4_24.rgBoot)
 importance(CBloom4_24.rgBoot, type=1)
+
+## Visualize variable importance ----------------------------------------------
+
+# Get variable importance from the model fit
+ImpData <- as.data.frame(importance(CBloom4_24.rgBoot))
+ImpData$Var.Names <- row.names(CBloom4_24.rgBoot)
+
+ggplot(ImpData, aes(x=Var.Names, y=`%IncMSE`)) +
+  geom_segment( aes(x=Var.Names, xend=Var.Names, y=0, yend=`%IncMSE`), color="skyblue") +
+  geom_point(aes(size = IncNodePurity), color="blue", alpha=0.6) +
+  theme_light() +
+  coord_flip() +
+  theme(
+    legend.position="bottom",
+    panel.grid.major.y = element_blank(),
+    panel.border = element_blank(),
+    axis.ticks.y = element_blank()
+  )
 
