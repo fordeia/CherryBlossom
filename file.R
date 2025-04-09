@@ -60,7 +60,7 @@ importance(CBloom4_24.rgBoot, type=1)
 
 # Get variable importance from the model fit
 ImpData <- as.data.frame(importance(CBloom4_24.rgBoot))
-ImpData$Var.Names <- row.names(CBloom4_24.rgBoot)
+ImpData$Var.Names <- as.character(dataframe$X)
 
 ggplot(ImpData, aes(x=Var.Names, y=`%IncMSE`)) +
   geom_segment( aes(x=Var.Names, xend=Var.Names, y=0, yend=`%IncMSE`), color="skyblue") +
