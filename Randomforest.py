@@ -39,6 +39,7 @@ plt.show()
 # Feature Importance Plot
 feature_importance = rf_regressor.feature_importances_
 feature_names = DataTot.columns
+feature_names=labels[:-1]
 
 plt.figure(figsize=(10, 6))
 plt.barh(feature_names, feature_importance, color='skyblue')
