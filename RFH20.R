@@ -76,7 +76,7 @@ sapply(hyper_grid.h2o, length) %>% prod()
 # Set random grid search criteria
 search_criteria_2 <- list (strategy = "RandomDiscrete", 
                            max_models = 50, 
-                           max_runtime_secs = 15 * 60)
+                           max_runtime_secs = 10 * 60)
 
 # Train Random Forest Models
 system.time(random_grid <- h2o.grid(algorithm = "randomForest",
