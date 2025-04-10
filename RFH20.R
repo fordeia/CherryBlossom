@@ -1,3 +1,3 @@
-install.packages("H2o")
-library (H2o)
+#install.packages("h2o")
+library (h2o)
 h2o.init()
