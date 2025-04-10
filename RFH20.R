@@ -20,4 +20,8 @@ h_test <- h_train |> mutate(across(c(OceTemp),as.factor))
 h_train<- as.h2o(h_train)
 h_test<- as.h2o(h_test)
 
+# regression - define features (x) and target (y) 
+target <- "PEAK"
+features <- setdiff(colnames(h_train), target)
+
 
