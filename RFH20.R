@@ -101,4 +101,6 @@ grid_perf@summary_table
 best_model <- h2o.getModel(grid_perf@model_ids[[1]])
 best_model
 
+# evaluate variable importance
+h2o.varimp(best_model)
 
