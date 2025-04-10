@@ -73,4 +73,9 @@ hyper_grid.h2o <- list(ntrees = seq(100, 500, by = 50),
 # Number of models
 sapply(hyper_grid.h2o, length) %>% prod()
 
+# Set random grid search criteria
+search_criteria_2 <- list (strategy = "RandomDiscrete", 
+                           max_models = 50, 
+                           max_runtime_secs = 15 * 60)
+
 
