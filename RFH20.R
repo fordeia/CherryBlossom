@@ -38,7 +38,7 @@ hyper_grid.h2o
 sapply(hyper_grid.h2o, length) %>% prod()
 
 # Train Random Forest Models
-systerm.time(grid_cartesian <- h2o.grid(algorithm = "randomForest",
+system.time(grid_cartesian <- h2o.grid(algorithm = "randomForest",
                                         # grid_id = "rf_grid1",
                                         x = features,
                                         y = target, 
