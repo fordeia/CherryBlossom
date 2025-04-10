@@ -61,6 +61,16 @@ grid_perf@summary_table
 best_model <- h2o.getModel(grid_perf@model_ids[[1]])
 best_model
 
+# Random Discrete Grid Search
+hyper_grid.h2o <- list(ntrees = seq(100, 500, by = 50), 
+                       mtries = 2:6
+                       # max_depth = seq(10, 30, by = 10), 
+                       # min_rows = seq(1, 3, by = 1),
+                       # nbins = seq(20, 30, by = 10), 
+                       # sample_rate = c(0.55, 0.75, 0.05)
+                       )
 
+# Number of models
+sapply(hyper_grid.h2o, length) %>% prod()
 
 
