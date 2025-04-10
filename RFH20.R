@@ -78,4 +78,15 @@ search_criteria_2 <- list (strategy = "RandomDiscrete",
                            max_models = 50, 
                            max_runtime_secs = 15 * 60)
 
+# Train Random Forest Models
+system.time(random_grid <- h2o.grid(algorithm = "randomForest",
+                                        # grid_id = "rf_grid2",
+                                        x = features,
+                                        y = target, 
+                                        seed = 1234, 
+                                        nfolds = 10, 
+                                        training_frame = h_train, 
+                                        hyper_params = hyper_grid.h2o,
+                                        search_criteria = search_criteria_2))
+
 
