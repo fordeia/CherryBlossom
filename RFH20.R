@@ -89,4 +89,6 @@ system.time(random_grid <- h2o.grid(algorithm = "randomForest",
                                         hyper_params = hyper_grid.h2o,
                                         search_criteria = search_criteria_2))
 
+random_grid
+
 
