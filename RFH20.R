@@ -24,4 +24,15 @@ h_test<- as.h2o(h_test)
 target <- "PEAK"
 features <- setdiff(colnames(h_train), target)
 
+# Cartesian Grid Search
+hyper_grid.h2o <- list(ntrees = seq(100, 300, by = 50), 
+                       mtries = 2:6
+                       # max_depth = seq(10, 30, by = 10), 
+                       # min_rows = seq(1, 3, by = 1),
+                       # nbins = seq(20, 30, by = 10), 
+                       # sample_rate = c(0.55, 0.632, 0.75)
+                       )
+hyper_grid.h2o
+                       
+
 
