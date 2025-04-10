@@ -57,5 +57,10 @@ grid_perf <- h2o.getGrid(grid_id = "Grid_DRF_h_train_sid_8ecf_21_model_R_1744251
                          decreasing = FALSE)
 grid_perf@summary_table
 
+# Best model chosen by validation error 
+best_model <- h2o.getModel(grid_perf@model_ids[[1]])
+best_model
+
+
 
 
