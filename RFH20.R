@@ -16,5 +16,8 @@ h_test <- read_excel("testCB.xlsx")
 h_train <- h_train |> mutate(across(c(OceTemp),as.factor))
 h_test <- h_train |> mutate(across(c(OceTemp),as.factor))
 
+#convert the R data.frame into H2O data frame
+h_train<- as.h2o(h_train)
+h_test<- as.h2o(h_test)
 
 
