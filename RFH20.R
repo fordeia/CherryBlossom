@@ -49,7 +49,7 @@ system.time(grid_cartesian <- h2o.grid(algorithm = "randomForest",
                                         search_criteria = list(strategy = "Cartesian")))
 
 
-
+grid_cartesian
                        
 
 
