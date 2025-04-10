@@ -91,4 +91,14 @@ system.time(random_grid <- h2o.grid(algorithm = "randomForest",
 
 random_grid
 
+# Collect the results and sort by a model performance metric of choice
+grid_perf <- h2o.getGrid(grid_id = "Grid_DRF_h_train_sid_b816_41_model_R_1744251079604_8",
+                         sort_by = "residual_deviance",
+                         decreasing = FALSE)
+grid_perf@summary_table
+
+# Best model chosen by validation error 
+best_model <- h2o.getModel(grid_perf@model_ids[[1]])
+best_model
+
 
