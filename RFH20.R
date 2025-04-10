@@ -104,3 +104,6 @@ best_model
 # evaluate variable importance
 h2o.varimp(best_model)
 
+# alternatively predict on the test set, confert H20Frame to vector and then calculate RMSE
+pred <- h2o.predict(object = best_model, newdata = h_test)
+sqrt(mean((as.vector(h_test$PEAK)-AS.vector(pred))^2))
