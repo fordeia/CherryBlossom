@@ -33,6 +33,10 @@ hyper_grid.h2o <- list(ntrees = seq(100, 300, by = 50),
                        # sample_rate = c(0.55, 0.632, 0.75)
                        )
 hyper_grid.h2o
+
+# Number of models
+sapply(hyper_grid.h2o, length) %>% prod()
+
                        
 
 
