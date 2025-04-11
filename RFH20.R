@@ -109,5 +109,5 @@ pred <- h2o.predict(object = best_model, newdata = h_test)
 sqrt(mean((as.vector(h_test$PEAK)-as.vector(pred))^2))
 
 # Create the partial dependence plot
-pdp <- h2o.pd_plot(best_model, h_test, column = c("JAN.RAIN","FEB.RAIN")
+pdp <- h2o.pd_plot(best_model, h_test, column = "JAN.RAIN")
 print(pdp)
