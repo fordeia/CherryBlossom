@@ -11,14 +11,29 @@ library(tidyverse)
 #install.packages("readxl")
 #install.packages("writexl")
 library(readxl)
-h_train <- read_excel("trainCB.xlsx")
-h_test <- read_excel("testCB.xlsx")
-h_train <- h_train |> mutate(across(c(OceTemp),as.factor))
-h_test <- h_train |> mutate(across(c(OceTemp),as.factor))
+#h_train <- read_excel("trainCB.xlsx")
+#h_test <- read_excel("testCB.xlsx")
+total <- read_excel("bootdataCBloom4_24.xlsx")
+
+#h_train <- h_train |> mutate(across(c(OceTemp),as.factor))
+#h_test <- h_train |> mutate(across(c(OceTemp),as.factor))
+
+total <- total |> mutate(across(c(OceTemp),as.factor))
+head(total)
 
 #convert the R data.frame into H2O data frame
-h_train<- as.h2o(h_train)
-h_test<- as.h2o(h_test)
+#h_train<- as.h2o(h_train)
+#h_test<- as.h2o(h_test)
+
+h_total<- as.h2o(total)
+set.seed(1234)
+
+#Splits data in total data frame with a ratio of 0.7 
+total.split<-h2o.splitFrame(data = h_total, ratios = 0.7, seed = 1234) 
+#Creates training set from 1st data set in split
+h_train<-total.split[[1]]
+#Creates testing set from 2nd data set in split
+h_test <- total.split[[2]]
 
 # regression - define features (x) and target (y) 
 target <- "PEAK"
