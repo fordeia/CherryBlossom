@@ -44,3 +44,7 @@ eval <- cbind(h_test$PEAK, predictions)
 colnames(eval) <- c("Y", "Yhat")
 eval <- as.data.frame(eval)
 head(eval)
+
+# Evaluate model
+mse <- mean((eval$Y - eval$Yhat)^2)
+rmse <- sqrt(mse)
