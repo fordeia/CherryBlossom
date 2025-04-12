@@ -21,14 +21,20 @@ head(total)
 h_total<- as.h2o(total)
 set.seed(1234)
 
+
 #Splits data in total data frame with a ratio of 0.7 
 total.split<-h2o.splitFrame(data = h_total, ratios = 0.7, seed = 1234) 
 
 #Creates training set from 1st data set in split
 h_train<-total.split[[1]]
 
+#Creating excel file to use for the MLR
+library(openxlsx)
+write.xlsx(h_train, 'C:/Users/fordeia/CherryBlossom/h_train.xlsx')
+
 #Creates testing set from 2nd data set in split
 h_test <- total.split[[2]]
+write.xlsx(h_test, 'C:/Users/fordeia/CherryBlossom/h_test.xlsx')
 
 # regression - define features (x) and target (y) 
 target <- "PEAK"
