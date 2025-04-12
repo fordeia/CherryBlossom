@@ -30,13 +30,18 @@ nrow(bootdataCBloom4_24)
 str(bootdataCBloom4_24)
 
 #5. Importing training and testing datasets
+h_train <- read_excel("h_train.xlsx")
+head(h_train)
+
+h_test <- read_excel("h_test.xlsx")
+head(h_test)
 
 #6. Training the random forest model with the bootstrap dataset
 set.seed(25)
-CBloom4_24.rgBoot <- randomForest(PEAK ~ ., data=train, importance=TRUE,
+CBloom4_24.rgBoot <- randomForest(PEAK ~ ., data=h_train, importance=TRUE,
                         proximity=TRUE)
 
-sqrt(sum((CBloom4_24.rgBoot$predicted - train$PEAK)^2) / nrow(train))
+sqrt(sum((CBloom4_24.rgBoot$predicted - h_train$PEAK)^2) / nrow(h_train))
 
 #Extracting feature importance
 
