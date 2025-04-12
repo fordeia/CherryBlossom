@@ -17,7 +17,7 @@ library(reshape)
 
 # Remove target variable
 temp_total <- subset(total, select = -c(PEAK))
-melt_total <- melt(temp_total)
+melt_total <- melt(temp_total,value.name = "value")
 
 # Draw boxplot
 boxplot(data = melt_total, value ~ variable)
