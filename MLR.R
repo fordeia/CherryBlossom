@@ -29,8 +29,6 @@ summary(model)
 # Get residuals
 lm_residuals <- as.data.frame(residuals(model))
 
-
-
 # Visualize residuals
 library(ggplot2)
 ggplot(lm_residuals, aes(residuals(model))) +
