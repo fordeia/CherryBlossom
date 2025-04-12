@@ -27,12 +27,12 @@ model <- lm(PEAK ~ ., data = h_train)
 summary(model)
 
 # Get residuals
-library(ggplot2)
 lm_residuals <- as.data.frame(residuals(model))
 
 
 
 # Visualize residuals
+library(ggplot2)
 ggplot(lm_residuals, aes(residuals(model))) +
   geom_histogram(fill = "#0099f9", color = "black") +
   theme_classic() +
