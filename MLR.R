@@ -25,3 +25,12 @@ boxplot(data = melt_total, value ~ variable)
 # Fit the model and obtain summary
 model <- lm(PEAK ~ ., data = h_train)
 summary(model)
+
+# Get residuals
+lm_residuals <- as.data.frame(residuals(model))
+
+# Visualize residuals
+ggplot(lm_residuals, aes(residuals(model))) +
+  geom_histogram(fill = "#0099f9", color = "black") +
+  theme_classic() +
+  labs(title = "Residuals plot")
