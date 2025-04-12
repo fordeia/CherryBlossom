@@ -62,7 +62,7 @@ system.time(grid_cartesian <- h2o.grid(algorithm = "randomForest",
 grid_cartesian
 
 # Collect the results and sort by a model performance metric of choice
-grid_perf <- h2o.getGrid(grid_id = "Grid_DRF_h_train_sid_8a1e_6_model_R_1744322960986_3",
+grid_perf <- h2o.getGrid(grid_id = "Grid_DRF_RTMP_sid_a496_51_model_R_1744399066243_5",
                          sort_by = "residual_deviance",
                          decreasing = FALSE)
 grid_perf@summary_table
