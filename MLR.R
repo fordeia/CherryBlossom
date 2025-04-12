@@ -27,7 +27,10 @@ model <- lm(PEAK ~ ., data = h_train)
 summary(model)
 
 # Get residuals
+library(ggplot2)
 lm_residuals <- as.data.frame(residuals(model))
+
+
 
 # Visualize residuals
 ggplot(lm_residuals, aes(residuals(model))) +
