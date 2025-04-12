@@ -29,20 +29,7 @@ head(bootdataCBloom4_24)
 nrow(bootdataCBloom4_24)
 str(bootdataCBloom4_24)
 
-#5. Creating the training and testing datasets
-#Splitting the data 70:30 
-set.seed(25)
-samp <- sample(nrow(bootdataCBloom4_24), 0.7 * nrow(bootdataCBloom4_24))
-train <- bootdataCBloom4_24[samp, ]
-nrow(train)
-test <- bootdataCBloom4_24[-samp, ]
-nrow(test)
-
-#Creating excel file to use in Python
-library(openxlsx)
-write.xlsx(bootdataCBloom4_24, 'C:/Users/fordeia/CherryBlossom/bootdataCBloom4_24.xlsx')
-write.xlsx(train, 'C:/Users/fordeia/CherryBlossom/trainCB.xlsx')
-write.xlsx(test, 'C:/Users/fordeia/CherryBlossom/testCB.xlsx')
+#5. Importing training and testing datasets
 
 #6. Training the random forest model with the bootstrap dataset
 set.seed(25)
