@@ -12,6 +12,7 @@ head(h_train)
 h_test <- read_excel("h_test.xlsx")
 head(h_test)
 
+install.packages("reshape")
 library(reshape)
 
 # Remove target variable
