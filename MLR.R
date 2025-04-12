@@ -21,3 +21,7 @@ melt_total <- melt(temp_total)
 
 # Draw boxplot (variable measured on different scale, therefore this is meaningless)
 boxplot(data = melt_total, value ~ variable)
+
+# Fit the model and obtain summary
+model <- lm(PEAK ~ ., data = h_train)
+summary(model)
