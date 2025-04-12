@@ -12,6 +12,8 @@ head(h_train)
 h_test <- read_excel("h_test.xlsx")
 head(h_test)
 
+library(reshape)
+
 # Remove target variable
 temp_total <- subset(total, select = -c(PEAK))
 melt_total <- melt(temp_total)
