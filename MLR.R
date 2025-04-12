@@ -40,7 +40,7 @@ ggplot(lm_residuals, aes(residuals(model))) +
 predictions <- predict(model, h_test)
 
 # Convert to dataframe
-eval <- cbind(h_test$Weight, predictions)
+eval <- cbind(h_test$PEAK, predictions)
 colnames(eval) <- c("Y", "Yhat")
 eval <- as.data.frame(eval)
 head(eval)
