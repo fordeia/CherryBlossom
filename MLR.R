@@ -37,3 +37,12 @@ ggplot(lm_residuals, aes(residuals(model))) +
   geom_histogram(fill = "#0099f9", color = "black", binwidth=1) +
   theme_classic() +
   labs(title = "Residuals plot")
+
+# Make predictions on the test set
+predictions <- predict(model, h_test)
+
+# Convert to dataframe
+eval <- cbind(h_test$Weight, predictions)
+colnames(eval) <- c("Y", "Yhat")
+eval <- as.data.frame(eval)
+head(eval)
