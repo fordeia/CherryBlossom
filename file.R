@@ -30,7 +30,7 @@ head(bootdataCBloom4_24)
 nrow(bootdataCBloom4_24)
 str(bootdataCBloom4_24)
 
-#5. Importing training and testing datasets
+#5. Importing training and testing datasets from the mlr splitting 
 h_train <- read_excel("h_train.xlsx")
 head(h_train)
 
