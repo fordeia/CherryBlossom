@@ -12,13 +12,12 @@ head(h_train)
 h_test <- read_excel("h_test.xlsx")
 head(h_test)
 
-#install.packages("reshape")
-#library(reshape)
+#Installing package for melt
 library(reshape2)
 
 # Remove target variable
 temp_total <- subset(total, select = -c(PEAK))
 melt_total <- melt(temp_total)
 
-# Draw boxplot
+# Draw boxplot (variable measured on different scale, therefore this is meaningless)
 boxplot(data = melt_total, value ~ variable)
