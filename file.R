@@ -89,5 +89,9 @@ system.time(ranger_fit<-train(PEAK~.,data = h_train, method ='ranger', importanc
                           trControl = trainControl(method = 'cv', number = 10 )))
 ranger_fit
 
+#Evaluating variance importance
+varImp(ranger_fit)
+
+
 
 
