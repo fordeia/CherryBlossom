@@ -78,5 +78,10 @@ rf_fit
 varImp(rf_fit)
 importance(rf_fit$finalModel)
 
+#Evaluate model performance on the test set
+rf_RMSE <-sqrt(mean((test$PEAK - predict(rf_fit, h_test))^))
+rf_RMSE
+
+
 
 
