@@ -82,6 +82,10 @@ importance(rf_fit$finalModel)
 rf_RMSE <-sqrt(mean((h_test$PEAK - predict(rf_fit, h_test))^2))
 rf_RMSE
 
+#Using Ranger
+system.time(ranger_fit<-train(PEAK~.,data = h_train, method ='ranger', importance =TRUE, 
+                          trControl = trainControl(method = 'cv', number = 10 )))
+ranger_fit
 
 
 
