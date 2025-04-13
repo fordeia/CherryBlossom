@@ -34,9 +34,11 @@ str(bootdataCBloom4_24)
 
 #5. Importing training and testing datasets from the mlr splitting 
 h_train <- read_excel("h_train.xlsx")
+h_train <- h_train |> mutate(across(c(OceTemp),as.factor))
 head(h_train)
 
 h_test <- read_excel("h_test.xlsx")
+h_test <- h_test |> mutate(across(c(OceTemp),as.factor))
 head(h_test)
 
 #6. Training the random forest model with the bootstrap dataset
