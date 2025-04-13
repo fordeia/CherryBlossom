@@ -79,6 +79,7 @@ rf_fit
 varImp(rf_fit)
 importance(rf_fit$finalModel)
 
+#OOB errors
 rf_fit$err.rate[,1]
 
 #Evaluate model performance on the test set
