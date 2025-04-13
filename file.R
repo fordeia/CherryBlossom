@@ -4,6 +4,7 @@ library(ggplot2)
 library(readxl)
 library(tidyverse)
 library(caret)
+library(ranger)
 
 #2. Loading Data
 CBloom4_24 <-read.table("Cherryblossom_2004-2024.txt",header =TRUE,sep="\t", fill = TRUE)
@@ -83,6 +84,7 @@ rf_RMSE <-sqrt(mean((h_test$PEAK - predict(rf_fit, h_test))^2))
 rf_RMSE
 
 #Using Ranger
+set.seed(25)
 system.time(ranger_fit<-train(PEAK~.,data = h_train, method ='ranger', importance =TRUE, 
                           trControl = trainControl(method = 'cv', number = 10 )))
 ranger_fit
