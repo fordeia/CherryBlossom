@@ -70,4 +70,9 @@ ggplot(ImpData, aes(x=Var.Names, y=`%IncMSE`)) +
     panel.border = element_blank(),
     axis.ticks.y = element_blank()
   )
+set.seed(1)
+system.time(rf_fit<-train(PEAK~.,data = h_train, method ='rf', importance =TRUE, 
+                          trControl = trainControl(method = 'cv', number = 10 )))
+rf_fit
+
 
