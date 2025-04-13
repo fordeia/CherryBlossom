@@ -92,6 +92,10 @@ ranger_fit
 #Evaluating variance importance
 varImp(ranger_fit)
 
+#Evaluating model performance on the test data
+ranger_RMSE <-sqrt(mean((h_test$PEAK - predict(ranger_fit, h_test))^2))
+ranger_RMSE
+
 
 
 
