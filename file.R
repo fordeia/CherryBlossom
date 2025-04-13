@@ -85,7 +85,7 @@ rf_RMSE
 
 #Using Ranger
 set.seed(25)
-system.time(ranger_fit<-train(PEAK~.,data = h_train, method ='ranger', importance =TRUE, 
+system.time(ranger_fit<-train(PEAK~.,data = h_train, method ='ranger', importance ='impurity', 
                           trControl = trainControl(method = 'cv', number = 10 )))
 ranger_fit
 
