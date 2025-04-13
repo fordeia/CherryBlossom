@@ -74,5 +74,8 @@ set.seed(1234)
 system.time(rf_fit<-train(PEAK~.,data = h_train, method ='rf', importance =TRUE, 
                           trControl = trainControl(method = 'cv', number = 10 )))
 rf_fit
+#Evaluate variable Importance
+varImp(rf_fit)
+
 
 
