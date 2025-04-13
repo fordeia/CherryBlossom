@@ -76,6 +76,7 @@ system.time(rf_fit<-train(PEAK~.,data = h_train, method ='rf', importance =TRUE,
 rf_fit
 #Evaluate variable Importance
 varImp(rf_fit)
+importance(rf_fit$finalModel)
 
 
 
