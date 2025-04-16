@@ -48,3 +48,6 @@ head(eval)
 # Evaluate model
 mse <- mean((eval$Y - eval$Yhat)^2)
 rmse <- sqrt(mse)
+
+#Error rate
+sigma(model)/mean(h_test$PEAK)
