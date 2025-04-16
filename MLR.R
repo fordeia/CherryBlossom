@@ -62,3 +62,13 @@ ggplot(h_test, aes(x = PEAK, y = predictions )) +
   xlab("Observed Values") +
   ylab("Predicted Values") +
   ggtitle("Observed vs. Predicted Values")
+
+#Stepwisse variable selection
+library(MASS)
+# Fit the full model 
+model <- lm(PEAK ~ ., data = h_train)
+full.model <- lm(PEAK ~ ., data = h_train)
+# Stepwise regression model
+step.model <- stepAIC(full.model, direction = "both", 
+                      trace = FALSE)
+summary(step.model)
