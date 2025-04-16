@@ -72,3 +72,6 @@ full.model <- lm(PEAK ~ ., data = h_train)
 step.model <- stepAIC(full.model, direction = "both", 
                       trace = FALSE)
 summary(step.model)
+
+#Extracting the R-squared
+str(summary(model))
