@@ -51,3 +51,14 @@ rmse <- sqrt(mse)
 
 #Error rate
 sigma(model)/mean(h_test$PEAK)
+
+library(ggplot2)
+
+# Assuming 'model' is your fitted regression model, and 'h_test' is your data frame
+
+ggplot(h_test, aes(x = h_test$PEAK, y = predictions )) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1, color = "red") +
+  xlab("Observed Values") +
+  ylab("Predicted Values") +
+  ggtitle("Observed vs. Predicted Values")
