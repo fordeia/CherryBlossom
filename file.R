@@ -30,8 +30,8 @@ X <- scale(X)
 # Perform PCA
 pca_result <- prcomp(X, scale = FALSE)
 
-# Access loadings
-loadings <- loadings(pca_result)
+# return factor scores for first principal component
+x_result <- pca_result$x[,"PC1"]
 
 loadings
 
