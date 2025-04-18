@@ -33,10 +33,6 @@ pca_result <- prcomp(X, scale = FALSE)
 # return factor scores for first principal component
 x_result <- pca_result$x[,"PC1"]
 
-#correlation between the pca and variables
-loadings <- pca_result$rotation
-loadings
-
 #Keep the first 2 components
 #pca_data <- as.data.frame(pca_result$x)[,1:2] # Select the first 2 PCs
 
@@ -72,6 +68,16 @@ cat("RMSE:", rmse, "\n")
 # cat("R-squared:", r_squared, "\n")
 # Print the importance of each PCA component
 print(rf_model$finalModel$importance)
+
+#Percentage contribution of each variable to the pca
+
+#correlation between the pca and variables
+loadings <- pca_result$rotation
+loadings
+
+pca_result$var$contrib
+
+
 
 
 
