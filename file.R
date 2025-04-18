@@ -75,7 +75,7 @@ print(rf_model$finalModel$importance)
 loadings <- pca_result$rotation
 loadings
 
-pca_result$var$contrib
+pca_result$var
 
 
 
