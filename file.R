@@ -66,35 +66,6 @@ cat("RMSE:", rmse, "\n")
 # Print the importance of each PCA component
 print(rf_model$finalModel$importance)
 
-########3. Fitting the random forest model with original dataset. ########################################
-set.seed(1237)
-CBloom4_24.rf <- randomForest(x = pca_result$x, y = CBloom4_24$PEAK)
-
-sqrt(sum((CBloom4_24.rf$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
-
-set.seed(1234)
-system.time(rf_fit1<-train(x = pca_result$x, y = CBloom4_24$PEAK, method ='rf', importance =TRUE, 
-                          trControl = trainControl(method = 'cv', number = 10 )))
-rf_fit1
-
-sqrt(sum((rf_fit1$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
-
-#Evaluate variable Importance
-varImp(rf_fit1)
-
-#OOB errors
-rf_fit$err.rate[,1]
-
-#Using Ranger
-set.seed(25)
-system.time(ranger_fit<-train(PEAK~.,data = CBloom4_24 , method ='ranger', importance ='impurity', 
-                          trControl = trainControl(method = 'cv', number = 10 )))
-ranger_fit
-
-#Evaluating variance importance
-varImp(ranger_fit)
-
-
 
 
 
