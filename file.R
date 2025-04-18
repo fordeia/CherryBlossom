@@ -25,11 +25,6 @@ CBloom4_24.rF <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE, proxim
 
 sqrt(sum((CBloom4_24.rf$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 
-#4 Splitting the data 70:30 
-set.seed(25)
-samp <- sample(nrow(CBloom4_24), 0.7 * nrow(CBloom4_24))
-h_train <- CBloom4_24[samp, ]
-h_test <- CBloom4_24[-samp, ]
 
 #5. Converting the OceTemp to factor
 h_train <- h_train |> mutate(across(c(OceTemp),as.factor))
@@ -40,10 +35,10 @@ head(h_test)
 
 #6. Training the random forest model with the bootstrap dataset
 set.seed(25)
-CBloom4_24.rf <- randomForest(PEAK ~ ., data=h_train, importance=TRUE,keep.forest=FALSE,
+CBloom4_24.rf <- randomForest(PEAK ~ ., data=CBloom4_24.rF, importance=TRUE,keep.forest=FALSE,
                         proximity=TRUE)
 
-sqrt(sum((CBloom4_24.rf$predicted - h_train$PEAK)^2) / nrow(h_train))
+sqrt(sum((CBloom4_24.rf$predicted - CBloom4_24.rF$PEAK)^2) / nrow(h_train))
 
 
 # Now you can use importance() on the underlying_model
