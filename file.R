@@ -33,6 +33,8 @@ pca_result <- prcomp(X, scale = FALSE)
 # return factor scores for first principal component
 x_result <- pca_result$x[,"PC1"]
 
+loadings <- pca_result$rotation. 
+
 #Keep the first 2 components
 #pca_data <- as.data.frame(pca_result$x)[,1:2] # Select the first 2 PCs
 
