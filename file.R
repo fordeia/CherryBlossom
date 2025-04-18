@@ -37,7 +37,7 @@ rf_fit$err.rate[,1]
 
 #Using Ranger
 set.seed(25)
-system.time(ranger_fit<-train(PEAK~.,data = h_train, method ='ranger', importance ='impurity', 
+system.time(ranger_fit<-train(PEAK~.,data = CBloom4_24 , method ='ranger', importance ='impurity', 
                           trControl = trainControl(method = 'cv', number = 10 )))
 ranger_fit
 
