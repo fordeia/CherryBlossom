@@ -38,7 +38,7 @@ explained_variance <- pca_result$sdev^2 / sum(pca_result$sdev^2)
 cumulative_variance <- cumsum(explained_variance)
 n_components <- which(cumulative_variance >= 0.95)[1] # Keep until 95% explained variance
 
-X_pca <- as.data.frame(pca_result$x[, 1:num_components])
+X_pca <- as.data.frame(pca_result$x[, 1:n_components])
 # Now X_pca contains the transformed data
 
 # Set the random seed for reproducibility
