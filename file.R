@@ -28,7 +28,7 @@ sqrt(sum((CBloom4_24.rg$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 
 #4 Splitting the data 70:30 
 set.seed(25)
-samp <- sample(nrow(CBloom4_24.rg), 0.7 * nrow(CBloom4_24.rg))
+samp <- sample(nrow(CBloom4_24), 0.7 * nrow(CBloom4_24))
 h_train <- CBloom4_24[samp, ]
 h_test <- CBloom4_24[-samp, ]
 
