@@ -12,3 +12,5 @@ library(dplyr)
 install.packages("readr")
 library(readr)
 use_condaenv("r-reticulate")
+
+conda update r-caret
