@@ -46,13 +46,9 @@ CBloom4_24.rftrain <- randomForest(PEAK ~ ., data=h_train, importance=TRUE,
 
 sqrt(sum((CBloom4_24.rftrain$predicted - h_train$PEAK)^2) / nrow(h_train))
 
-#Extracting feature importance
-
-underlying_model <- CBloom4_24.rftrain$forest  # Extract the Random Forest object
-
 # Now you can use importance() on the underlying_model
-importance_values <- importance(underlying_model)
-importance_values <- importance(underlying_model, type=1)
+importance_values <- importance(CBloom4_24.rftrain)
+importance_values <- importance(CBloom4_24.rftrain, type=1)
 
 #7. Visualize variable importance ----------------------------------------------
 
