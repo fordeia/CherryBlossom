@@ -22,7 +22,7 @@ CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
 
 # Separate features (X) and target (y)
 X <- CBloom4_24[, -which(names(CBloom4_24) == "PEAK")]  
-y <- CBloom4_24$target_variable
+y <- CBloom4_24$PEAK
 # Center and scale the data for PCA
 X <- scale(X)
 
@@ -41,21 +41,17 @@ n_components <- which(cumulative_variance >= 0.95)[1] # Keep until 95% explained
 X_pca <- as.data.frame(pca_result$x[, 1:num_components])
 # Now X_pca contains the transformed data
 
-# Add the target variable back to the data frame
-pca_data$PEAK <- CBloom4_24$PEAK 
-
-# Fit a Random Forest model
-rf_model <- randomForest(PEAK ~ ., data = pca_data, ntree = 100)
-
 # Set the random seed for reproducibility
 set.seed(123)
+
 # Define a train control for cross-validation (e.g., 10-fold CV)
 train_control <- trainControl(method = "cv", number = 10)
 
 # Train the Random Forest model
 rf_model <- train(X_pca, y, method = "rf", trControl = train_control)
+
 # (Optional) Print the model summary
-# print(rf_model)
+print(rf_model)
 
 ########3. Fitting the random forest model with original dataset. ########################################
 set.seed(1237)
