@@ -14,3 +14,8 @@ library(readr)
 use_condaenv("r-reticulate")
 
 conda update r-caret
+
+# Set the seed for Keras/TensorFlow
+tensorflow::set_random_seed(123)
+mnist<- dataset_mnist()
+
