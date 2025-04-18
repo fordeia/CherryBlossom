@@ -31,14 +31,9 @@ system.time(rf_fit<-train(PEAK~.,data = CBloom4_24, method ='rf', importance =TR
 rf_fit
 #Evaluate variable Importance
 varImp(rf_fit)
-importance(rf_fit$finalModel)
 
 #OOB errors
 rf_fit$err.rate[,1]
-
-#Evaluate model performance on the test set
-rf_RMSE <-sqrt(mean((h_test$PEAK - predict(rf_fit, h_test))^2))
-rf_RMSE
 
 #Using Ranger
 set.seed(25)
@@ -49,9 +44,6 @@ ranger_fit
 #Evaluating variance importance
 varImp(ranger_fit)
 
-#Evaluating model performance on the test data
-ranger_RMSE <-sqrt(mean((h_test$PEAK - predict(ranger_fit, h_test))^2))
-ranger_RMSE
 
 
 
