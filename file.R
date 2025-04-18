@@ -33,6 +33,9 @@ set.seed(1234)
 system.time(rf_fit1<-train(x = pca_result$x, y = CBloom4_24$PEAK, method ='rf', importance =TRUE, 
                           trControl = trainControl(method = 'cv', number = 10 )))
 rf_fit1
+
+sqrt(sum((rf_fit1$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
+
 #Evaluate variable Importance
 varImp(rf_fit1)
 
