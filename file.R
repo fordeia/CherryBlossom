@@ -20,8 +20,15 @@ CBloom4_24<-CBloom4_24[ , -c(1,3, 4, 5, 6,10,11,12,13,14,15,16)]
 #Dropping rows with NA
 CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
 
+# Separate features (X) and target (y)
+X <- CBloom4_24[, -which(names(CBloom4_24) == "PEAK")]  
+y <- CBloom4_24$target_variable
+# Center and scale the data for PCA
+X <- scale(X)
+
 #Principle Component Analysis
-pca_result <- prcomp(CBloom4_24, scale = TRUE)
+# Perform PCA
+pca_result <- prcomp(X, scale = FALSE)
 
 #Keep the first 2 components
 #pca_data <- as.data.frame(pca_result$x)[,1:2] # Select the first 2 PCs
@@ -31,7 +38,8 @@ explained_variance <- pca_result$sdev^2 / sum(pca_result$sdev^2)
 cumulative_variance <- cumsum(explained_variance)
 n_components <- which(cumulative_variance >= 0.95)[1] # Keep until 95% explained variance
 
-pca_data <- as.data.frame(pca_result$x)[,1:n_components]
+X_pca <- as.data.frame(pca_result$x[, 1:num_components])
+# Now X_pca contains the transformed data
 
 # Add the target variable back to the data frame
 pca_data$PEAK <- CBloom4_24$PEAK 
