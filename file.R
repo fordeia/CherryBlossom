@@ -30,6 +30,11 @@ X <- scale(X)
 # Perform PCA
 pca_result <- prcomp(X, scale = FALSE)
 
+# Access loadings
+loadings <- loadings(pca_result)
+
+loadings
+
 #Keep the first 2 components
 #pca_data <- as.data.frame(pca_result$x)[,1:2] # Select the first 2 PCs
 
