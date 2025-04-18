@@ -45,7 +45,7 @@ X_pca <- as.data.frame(pca_result$x[, 1:n_components])
 set.seed(123)
 
 # Define a train control for cross-validation (e.g., 10-fold CV)
-train_control <- trainControl(method = "cv", number = 10)
+train_control <- trainControl(method = "LOOCV",classProbs)
 
 # Train the Random Forest model
 rf_model <- train(X_pca, y, method = "rf", trControl = train_control)
