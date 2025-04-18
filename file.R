@@ -21,7 +21,7 @@ CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
 
 #3. Fitting the random forest model with original dataset. 
 set.seed(1237)
-CBloom4_24.rg <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE,
+CBloom4_24.rF <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE,
                         proximity=TRUE)
 
 sqrt(sum((CBloom4_24.rg$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
@@ -29,8 +29,8 @@ sqrt(sum((CBloom4_24.rg$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 #4 Splitting the data 70:30 
 set.seed(25)
 samp <- sample(nrow(CBloom4_24.rg), 0.7 * nrow(CBloom4_24.rg))
-h_train <- CBloom4_24.rg[samp, ]
-h_test <- CBloom4_24.rg[-samp, ]
+h_train <- CBloom4_24[samp, ]
+h_test <- CBloom4_24[-samp, ]
 
 #5. Importing training and testing datasets from the mlr splitting 
 h_train <- read_excel("h_train.xlsx")
