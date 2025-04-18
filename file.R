@@ -25,7 +25,7 @@ pca_result <- prcomp(CBloom4_24)
 
 #3. Fitting the random forest model with original dataset. 
 set.seed(1237)
-CBloom4_24.rf <- randomForest(PEAK ~ ., data=pca_result, importance=TRUE, proximity=TRUE)
+rf_model <- randomForest(x = pca_result$x, y = CBloom4_24$PEAK)
 
 sqrt(sum((CBloom4_24.rf$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 
