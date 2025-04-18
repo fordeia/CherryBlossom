@@ -21,7 +21,7 @@ CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
 
 #3. Fitting the random forest model with original dataset. 
 set.seed(1237)
-CBloom4_24.rF <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE, proximity=TRUE)
+CBloom4_24.rf <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE, proximity=TRUE)
 
 sqrt(sum((CBloom4_24.rf$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 
@@ -35,7 +35,7 @@ head(h_test)
 
 #6. Training the random forest model with the bootstrap dataset
 set.seed(25)
-CBloom4_24.rf <- randomForest(PEAK ~ ., data=CBloom4_24.rF, importance=TRUE,keep.forest=FALSE,
+CBloom4_24.rf <- randomForest(PEAK ~ ., data=CBloom4_24.rf, importance=TRUE,keep.forest=FALSE,
                         proximity=TRUE)
 
 sqrt(sum((CBloom4_24.rf$predicted - CBloom4_24.rF$PEAK)^2) / nrow(h_train))
