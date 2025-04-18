@@ -32,31 +32,29 @@ samp <- sample(nrow(CBloom4_24), 0.7 * nrow(CBloom4_24))
 h_train <- CBloom4_24[samp, ]
 h_test <- CBloom4_24[-samp, ]
 
-#5. Importing training and testing datasets from the mlr splitting 
-h_train <- read_excel("h_train.xlsx")
+#5. Converting the OceTemp to factor
 h_train <- h_train |> mutate(across(c(OceTemp),as.factor))
 head(h_train)
 
-h_test <- read_excel("h_test.xlsx")
 h_test <- h_test |> mutate(across(c(OceTemp),as.factor))
 head(h_test)
 
 #6. Training the random forest model with the bootstrap dataset
 set.seed(25)
-CBloom4_24.rgBoot <- randomForest(PEAK ~ ., data=h_train, importance=TRUE,
+CBloom4_24.rftrain <- randomForest(PEAK ~ ., data=h_train, importance=TRUE,
                         proximity=TRUE)
 
-sqrt(sum((CBloom4_24.rgBoot$predicted - h_train$PEAK)^2) / nrow(h_train))
+sqrt(sum((CBloom4_24.rftrain$predicted - h_train$PEAK)^2) / nrow(h_train))
 
 #Extracting feature importance
 
-importance(CBloom4_24.rgBoot)
-importance(CBloom4_24.rgBoot, type=1)
+importance(CBloom4_24.rftrain)
+importance(CBloom4_24.rftrain, type=1)
 
 #7. Visualize variable importance ----------------------------------------------
 
 # Get variable importance from the model fit
-ImpData <- as.data.frame(importance(CBloom4_24.rgBoot))
+ImpData <- as.data.frame(importance(CBloom4_24.rftrain))
 ImpData$Var.Names <- row.names(ImpData)
 
 ggplot(ImpData, aes(x=Var.Names, y=`%IncMSE`)) +
