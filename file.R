@@ -45,6 +45,14 @@ CBloom4_24.rftrain <- randomForest(PEAK ~ ., data=h_train, importance=TRUE,
 
 sqrt(sum((CBloom4_24.rftrain$predicted - h_train$PEAK)^2) / nrow(h_train))
 
+#Or
+# Use this:
+    my_dat_x <- h_train[, c("JAN.RAIN", "FEB.RAIN","SNOWjf","JAN.TEMP","FEB.TEMP", "OceTemp")] # Separate predictors
+    my_dat_y <-h_train$PEAK                  # Target variable
+    my_model <- randomForest(x = my_dat_x, y = my_dat_y)
+
+    importance_values <- importance(my_model)
+
 # Now you can use importance() on the underlying_model
 importance_values <- importance(CBloom4_24.rftrain)
 importance_values <- importance(CBloom4_24.rftrain, type=1)
