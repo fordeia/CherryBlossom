@@ -25,29 +25,8 @@ CBloom4_24.rf <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE, proxim
 
 sqrt(sum((CBloom4_24.rf$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 
-# Now you can use importance() on the underlying_model
-importance_values <- importance(CBloom4_24.rf)
-importance_values <- importance(CBloom4_24.rf, type=1)
-
-#7. Visualize variable importance ----------------------------------------------
-
-# Get variable importance from the model fit
-ImpData <- as.data.frame(importance(CBloom4_24.rftrain))
-ImpData$Var.Names <- row.names(ImpData)
-
-ggplot(ImpData, aes(x=Var.Names, y=`%IncMSE`)) +
-  geom_segment( aes(x=Var.Names, xend=Var.Names, y=0, yend=`%IncMSE`), color="skyblue") +
-  geom_point(aes(size = IncNodePurity), color="blue", alpha=0.6) +
-  theme_light() +
-  coord_flip() +
-  theme(
-    legend.position="bottom",
-    panel.grid.major.y = element_blank(),
-    panel.border = element_blank(),
-    axis.ticks.y = element_blank()
-  )
 set.seed(1234)
-system.time(rf_fit<-train(PEAK~.,data = h_train, method ='rf', importance =TRUE, 
+system.time(rf_fit<-train(PEAK~.,data = CBloom4_24, method ='rf', importance =TRUE, 
                           trControl = trainControl(method = 'cv', number = 10 )))
 rf_fit
 #Evaluate variable Importance
