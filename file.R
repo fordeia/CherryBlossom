@@ -30,7 +30,7 @@ CBloom4_24.rf <- randomForest(x = pca_result$x, y = CBloom4_24$PEAK)
 sqrt(sum((CBloom4_24.rf$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 
 set.seed(1234)
-system.time(rf_fit<-train(PEAK~.,data = CBloom4_24, method ='rf', importance =TRUE, 
+system.time(rf_fit<-train(x = pca_result$x, y = CBloom4_24$PEAK, method ='rf', importance =TRUE, 
                           trControl = trainControl(method = 'cv', number = 10 )))
 rf_fit
 #Evaluate variable Importance
