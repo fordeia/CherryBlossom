@@ -19,6 +19,13 @@ CBloom4_24<-CBloom4_24[ , -c(1,3, 4, 5, 6,10,11,12,13,14,15,16)]
 #Dropping rows with NA
 CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
 
+dim(CBloom4_24)
+
+#Principle Component Analysis
+pca_result <- prcomp(CBloom4_24)
+
+dim(pca_result)
+
 #3. Fitting the random forest model with original dataset. 
 set.seed(1237)
 CBloom4_24.rf <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE, proximity=TRUE)
