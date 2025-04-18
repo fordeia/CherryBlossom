@@ -26,7 +26,11 @@ CBloom4_24.rg <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE,
 
 sqrt(sum((CBloom4_24.rg$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 
-
+#4 Splitting the data 70:30 
+set.seed(25)
+samp <- sample(nrow(CBloom4_24.rg), 0.7 * nrow(CBloom4_24.rg))
+h_train <- CBloom4_24.rg[samp, ]
+h_test <- CBloom4_24.rg[-samp, ]
 
 #5. Importing training and testing datasets from the mlr splitting 
 h_train <- read_excel("h_train.xlsx")
