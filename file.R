@@ -53,6 +53,19 @@ rf_model <- train(X_pca, y, method = "rf", trControl = train_control)
 # (Optional) Print the model summary
 print(rf_model)
 
+# Make predictions on the test set
+predictions <- predict(rf_model, X_pca)
+
+# Evaluate the model's performance (e.g., RMSE)
+rmse <- sqrt(mean((predictions - y)^2))
+cat("RMSE:", rmse, "\n")
+
+# You can also use other metrics like R-squared
+# r_squared <- cor(predictions, y)^2
+# cat("R-squared:", r_squared, "\n")
+# Print the importance of each PCA component
+print(rf_model$finalModel$importance)
+
 ########3. Fitting the random forest model with original dataset. ########################################
 set.seed(1237)
 CBloom4_24.rf <- randomForest(x = pca_result$x, y = CBloom4_24$PEAK)
