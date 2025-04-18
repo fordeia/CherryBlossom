@@ -24,7 +24,7 @@ CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
 pca_result <- prcomp(CBloom4_24, scale = TRUE)
 
 #Keep the first 2 components
-pca_data <- as.data.frame(pca_result$x)[,1:2] # Select the first 2 PCs
+#pca_data <- as.data.frame(pca_result$x)[,1:2] # Select the first 2 PCs
 
 # Alternatively, keep components based on explained variance
 explained_variance <- pca_result$sdev^2 / sum(pca_result$sdev^2)
@@ -38,6 +38,16 @@ pca_data$PEAK <- CBloom4_24$PEAK
 
 # Fit a Random Forest model
 rf_model <- randomForest(PEAK ~ ., data = pca_data, ntree = 100)
+
+# Set the random seed for reproducibility
+set.seed(123)
+# Define a train control for cross-validation (e.g., 10-fold CV)
+train_control <- trainControl(method = "cv", number = 10)
+
+# Train the Random Forest model
+rf_model <- train(X_pca, y, method = "rf", trControl = train_control)
+# (Optional) Print the model summary
+# print(rf_model)
 
 ########3. Fitting the random forest model with original dataset. ########################################
 set.seed(1237)
