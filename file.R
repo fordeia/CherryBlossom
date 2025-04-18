@@ -23,7 +23,7 @@ CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
 set.seed(1237)
 CBloom4_24.rF <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE, proximity=TRUE)
 
-sqrt(sum((CBloom4_24.rg$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
+sqrt(sum((CBloom4_24.rf$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 
 #4 Splitting the data 70:30 
 set.seed(25)
@@ -40,15 +40,15 @@ head(h_test)
 
 #6. Training the random forest model with the bootstrap dataset
 set.seed(25)
-CBloom4_24.rftrain <- randomForest(PEAK ~ ., data=h_train, importance=TRUE,
+CBloom4_24.rf <- randomForest(PEAK ~ ., data=h_train, importance=TRUE,keep.forest=FALSE,
                         proximity=TRUE)
 
-sqrt(sum((CBloom4_24.rftrain$predicted - h_train$PEAK)^2) / nrow(h_train))
+sqrt(sum((CBloom4_24.rf$predicted - h_train$PEAK)^2) / nrow(h_train))
 
 
 # Now you can use importance() on the underlying_model
-importance_values <- importance(CBloom4_24.rftrain)
-importance_values <- importance(CBloom4_24.rftrain, type=1)
+importance_values <- importance(CBloom4_24.rf)
+importance_values <- importance(CBloom4_24.rf, type=1)
 
 #7. Visualize variable importance ----------------------------------------------
 
