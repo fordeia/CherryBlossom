@@ -33,6 +33,9 @@ n_components <- which(cumulative_variance >= 0.95)[1] # Keep until 95% explained
 
 pca_data <- as.data.frame(pca_result$x)[,1:n_components]
 
+# Add the target variable back to the data frame
+pca_data$PEAK <- CBloom4_24$PEAK 
+
 ########3. Fitting the random forest model with original dataset. ################
 set.seed(1237)
 CBloom4_24.rf <- randomForest(x = pca_result$x, y = CBloom4_24$PEAK)
