@@ -21,8 +21,7 @@ CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
 
 #3. Fitting the random forest model with original dataset. 
 set.seed(1237)
-CBloom4_24.rF <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE,
-                        proximity=TRUE)
+CBloom4_24.rF <- randomForest(PEAK ~ ., data=CBloom4_24, importance=TRUE, proximity=TRUE)
 
 sqrt(sum((CBloom4_24.rg$predicted - CBloom4_24$PEAK)^2) / nrow(CBloom4_24))
 
