@@ -26,7 +26,14 @@ pca_result <- prcomp(CBloom4_24, scale = TRUE)
 #Keep the first 2 components
 pca_data <- as.data.frame(pca_result$x)[,1:2] # Select the first 2 PCs
 
-#3. Fitting the random forest model with original dataset. 
+# Alternatively, keep components based on explained variance
+explained_variance <- pca_result$sdev^2 / sum(pca_result$sdev^2)
+cumulative_variance <- cumsum(explained_variance)
+n_components <- which(cumulative_variance >= 0.95)[1] # Keep until 95% explained variance
+
+pca_data <- as.data.frame(pca_result$x)[,1:n_components]
+
+########3. Fitting the random forest model with original dataset. ################
 set.seed(1237)
 CBloom4_24.rf <- randomForest(x = pca_result$x, y = CBloom4_24$PEAK)
 
