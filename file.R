@@ -77,9 +77,9 @@ loadings
 
 summary(pca_result)
 
-#Multiple Linear Regression
+#Multiple Linear Regression ##########################################################
 library(car)
-
+library(boot)
 # Fit the linear model
 lm_model <- lm(PEAK ~., data = CBloom4_24)
 
