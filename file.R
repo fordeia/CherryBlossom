@@ -107,7 +107,7 @@ for (i in 1:boot_samples) {
   boot_data <- CBloom4_24[sample(nrow(CBloom4_24), size = boot_samples, replace = TRUE), ]
 
   # Fit MLR model using selected variables
-  mlr_model <- lm(PEAK ~ ., data = boot_data, subset = names(selected_variables!=(Intercept)) )
+  mlr_model <- lm(PEAK ~ ., data = boot_data, subset = names(selected_variables!="(Intercept)") )
 
   # Store coefficient estimates
   boot_results[i, ] <- coef(mlr_model)
