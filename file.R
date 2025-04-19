@@ -80,11 +80,13 @@ summary(pca_result)
 #Multiple Linear Regression ##########################################################
 library(car)
 library(boot)
+library(MASS)
+
 # Fit the linear model
-lm_model <- lm(PEAK ~., data = CBloom4_24)
+model_stepwise <- step(lm(PEAK ~., data = CBloom4_24), scope = formula, direction = "forward", k = 2)
 
 # Bootstrapping
-boot_model <- Boot(lm_model, R = 1000)
+boot_model <- Boot(model_stepwise, R = 1000)
 
 # Analyze the results
 summary(boot_model)
