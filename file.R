@@ -104,7 +104,7 @@ boot_results <- matrix(0, nrow = boot_samples, ncol = length(selected_variables)
 # Fit MLR models to bootstrap samples
 for (i in 1:boot_samples) {
   # Bootstrap sample
-  boot_data <- CBloom4_24[sample(nrow(CBloom4_24), replace = TRUE), ]
+  boot_data <- CBloom4_24[sample(boot_samples, replace = TRUE), ]
 
   # Fit MLR model using selected variables
   mlr_model <- lm(PEAK ~ ., data = boot_data, subset = names(selected_variables) )
