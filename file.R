@@ -84,7 +84,7 @@ library(boot)
 lm_model <- lm(PEAK ~., data = CBloom4_24)
 
 # Bootstrapping
-# Note: You may need to install car package: install.packages("car")
+coef.lm<-coefficients(lm_model)
 boot_model <- boot(lm_model, statistic = coef.lm, R = 1000)
 
 # Analyze the results
