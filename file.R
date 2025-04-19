@@ -77,6 +77,20 @@ loadings
 
 summary(pca_result)
 
+#Multiple Linear Regression
+library(car)
+
+# Fit the linear model
+lm_model <- lm(PEAK ~., data = CBloom4_24)
+
+# Bootstrapping
+# Note: You may need to install car package: install.packages("car")
+boot_model <- boot(lm_model, statistic = coef.lm, R = 1000)
+
+# Analyze the results
+summary(boot_model)
+boot.ci(boot_model, type = "bca") # Confidence intervals
+
 
 
 
