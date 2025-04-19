@@ -93,7 +93,8 @@ library(MASS)
 #confint(boot_model, level= .95) # Confidence intervals
 
 # Stepwise variable selection
-full_model <- lm(PEAK ~ ., data = CBloom4_24)
+data= CBloom4_24
+full_model <- lm(PEAK ~ ., data = data)
 stepwise_model <- stepAIC(full_model, direction = "both") # Forward or backward
 selected_variables <- coef(stepwise_model)[coef(stepwise_model) != 0]
 
@@ -104,10 +105,10 @@ boot_results <- matrix(0, nrow = boot_samples, ncol = length(selected_variables)
 # Fit MLR models to bootstrap samples
 for (i in 1:boot_samples) {
   # Bootstrap sample
-  boot_data <- CBloom4_24[sample(nrow(CBloom4_24), size = boot_samples, replace = TRUE), ]
+  boot_data <- data[sample(nrow(data), replace = TRUE), ]
 
   # Fit MLR model using selected variables
-  mlr_model <- lm(PEAK ~ ., data = boot_data, subset = names(selected_variables!="(Intercept)") )
+  mlr_model <- lm(PEAK ~ ., data = boot_data, subset = names(selected_variables) )
 
   # Store coefficient estimates
   boot_results[i, ] <- coef(mlr_model)
