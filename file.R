@@ -84,12 +84,11 @@ library(boot)
 lm_model <- lm(PEAK ~., data = CBloom4_24)
 
 # Bootstrapping
-coef.lm<-coefficients(lm_model)
-boot_model <- boot(lm_model, statistic = coef.lm, R = 1000)
+boot_model <- Boot(lm_model, R = 1000)
 
 # Analyze the results
 summary(boot_model)
-boot.ci(boot_model, type = "bca") # Confidence intervals
+confint(boot_model, level= .95) # Confidence intervals
 
 
 
