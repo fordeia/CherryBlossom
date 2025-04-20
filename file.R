@@ -127,8 +127,10 @@ boot_data <- list()
 for (i in 1:boot_samples) {
   # Bootstrap sample
   
-  boot_data[[i]] <- CBloom4_24[sample(nrow(CBloom4_24), replace = TRUE), ]
+  samp<-sample(nrow(CBloom4_24), replace = TRUE)
+  boot_data[[i]]<-CBloom4_24[samp,]
 
+  #boot_data[[i]] <- CBloom4_24[sample(nrow(CBloom4_24), replace = TRUE), ]
   # Fit MLR model using selected variables
   mlr_model <- lm(PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, data = boot_data[[i]])
 
