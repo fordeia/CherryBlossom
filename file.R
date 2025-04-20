@@ -129,7 +129,7 @@ for (i in 1:boot_samples) {
   
   boot_data[[i]] <- CBloom4_24[sample(nrow(CBloom4_24), replace = TRUE), ]
 
- oob_data <-CBloom4_24[-boot_data[[i]], ]
+ oob_data[[i]] <-CBloom4_24[-boot_data[[i]], ]
 
   # Fit MLR model using selected variables
   mlr_model <- lm(PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, data = boot_data[[i]])
