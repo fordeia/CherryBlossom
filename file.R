@@ -125,7 +125,7 @@ for (i in 1:boot_samples) {
   boot_data <- CBloom4_24[sample(nrow(CBloom4_24), replace = TRUE), ]
 
   # Fit MLR model using selected variables
-  mlr_model <- lm(PEAK ~ PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, data = boot_data)
+  mlr_model <- lm(PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, data = boot_data)
 
   # Store coefficient estimates
   boot_results[i, ] <- coef(mlr_model)
