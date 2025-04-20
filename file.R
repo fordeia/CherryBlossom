@@ -111,6 +111,7 @@ set.seed(25)
 
 
 # Stepwise variable selection
+set.seed(25)
 full_model <- lm(PEAK ~ ., data = CBloom4_24)
 stepwise_model <- stepAIC(full_model, direction = "both") # Forward or backward
 selected_variables <- coef(stepwise_model)[coef(stepwise_model) != 0]
