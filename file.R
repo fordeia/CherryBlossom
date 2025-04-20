@@ -48,7 +48,7 @@ X_pca <- as.data.frame(pca_result$x[, 1:n_components])
 set.seed(123)
 
 # Define a train control for cross-validation (e.g., leave-one-out)
-train_control <- trainControl(method = "LOOCV",classProbs=TRUE)
+train_control <- trainControl(method = "LOOCV")
 
 # Train the Random Forest model
 rf_model <- train(X_pca, y, method = "rf", trControl = train_control)
@@ -108,7 +108,8 @@ for (i in 1:boot_samples) {
   boot_data <- data[sample(nrow(data), replace = TRUE), ]
 
   # Fit MLR model using selected variables
-  mlr_model <- lm(PEAK ~ ., data = boot_data, subset = selected_variables[!names(selected_variables) == "(Intercept)"] )
+  mlr_model <- lm(PEAK ~ ., data = boot_data, subset( boot_data, select = selected_variables[!names(selected_variables) == "(Intercept)"] ))
+ 
 
   # Store coefficient estimates
   boot_results[i, ] <- coef(mlr_model)
