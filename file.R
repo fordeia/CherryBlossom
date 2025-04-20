@@ -99,26 +99,15 @@ stepwise_model <- stepAIC(full_model, direction = "both") # Forward or backward
 selected_variables <- coef(stepwise_model)[coef(stepwise_model) != 0]
 
 # Bootstrapping
-boot_samples <- 1000  # Number of bootstrap samples
-boot_results <- matrix(0, nrow = boot_samples, ncol = length(selected_variables))
-
-# Fit MLR models to bootstrap samples
-for (i in 1:boot_samples) {
-  # Bootstrap sample
-  boot_data <- data[sample(nrow(data), replace = TRUE), ]
-
+set.seed(25)
   # Fit MLR model using selected variables
-  mlr_model <- lm(PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, data = boot_data)
- 
-  # Store coefficient estimates
-  boot_results[i, ] <- coef(mlr_model)
-}
+  mlr_model <- lm(data = CBloom4_24, PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, )
 
-# Analyze bootstrap results
-# (e.g., frequency of variable inclusion, coefficient distributions)
+  fit_b<-Boot(mlr_model, R = 1000)
+  summary(fit_b)
+  confint(fit_b, level = .95)
 
 selected_variables
-mlr_model
 
 
 
