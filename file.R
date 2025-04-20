@@ -108,9 +108,8 @@ for (i in 1:boot_samples) {
   boot_data <- data[sample(nrow(data), replace = TRUE), ]
 
   # Fit MLR model using selected variables
-  mlr_model <- lm(boot_data$PEAK ~ ., data = names(subset( boot_data, select = selected_variables[!names(selected_variables) == "(Intercept)"] )))
+  mlr_model <- lm(PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, data = boot_data)
  
-
   # Store coefficient estimates
   boot_results[i, ] <- coef(mlr_model)
 }
