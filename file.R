@@ -122,14 +122,15 @@ boot_results <- matrix(0, nrow = boot_samples, ncol = length(selected_variables)
 # Fit MLR models to bootstrap samples
 # create an empty list to store the samples
 boot_data <- list()
-#oob_data <- list()
+oob_data <- list()
 
 for (i in 1:boot_samples) {
   # Bootstrap sample
   
   samp<-sample(nrow(CBloom4_24), replace = TRUE)
   boot_data[[i]]<-CBloom4_24[samp,]
-
+  oob_data[[i]]<-CBloom4_24[-samp,]
+  
   #boot_data[[i]] <- CBloom4_24[sample(nrow(CBloom4_24), replace = TRUE), ]
   # Fit MLR model using selected variables
   mlr_model <- lm(PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, data = boot_data[[i]])
@@ -141,7 +142,7 @@ for (i in 1:boot_samples) {
 
 # view the first sample
 head(boot_data[[1]])
-
+head(oob_data[[1]])
 selected_variables
 
 
