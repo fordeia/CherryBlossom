@@ -109,7 +109,6 @@ set.seed(25)
 
 #MLR with bootstapping 2 ############################################
 
-
 # Stepwise variable selection
 set.seed(25)
 full_model <- lm(PEAK ~ ., data = CBloom4_24)
@@ -121,18 +120,24 @@ boot_samples <- 1000  # Number of bootstrap samples
 boot_results <- matrix(0, nrow = boot_samples, ncol = length(selected_variables))
 
 # Fit MLR models to bootstrap samples
+# create an empty list to store the samples
+boot_data <- list()
+
 for (i in 1:boot_samples) {
   # Bootstrap sample
-  boot_data <- CBloom4_24[sample(nrow(CBloom4_24), replace = TRUE), ]
+  
+  boot_data[[i]] <- CBloom4_24[sample(nrow(CBloom4_24), replace = TRUE), ]
 
   # Fit MLR model using selected variables
-  mlr_model <- lm(PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, data = boot_data)
+  mlr_model <- lm(PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, data = boot_data[[i]])
 
   # Store coefficient estimates
   boot_results[i, ] <- coef(mlr_model)
 }
 
 
+# view the first sample
+head(boot_data[[1]])
 selected_variables
 
 
