@@ -108,7 +108,7 @@ for (i in 1:boot_samples) {
   boot_data <- data[sample(nrow(data), replace = TRUE), ]
 
   # Fit MLR model using selected variables
-  mlr_model <- lm(PEAK ~ ., data = subset( boot_data, select = selected_variables[!names(selected_variables) == "(Intercept)"] ))
+  mlr_model <- lm(boot_data$PEAK ~ ., data = subset( boot_data, select = selected_variables[!names(selected_variables) == "(Intercept)"] ))
  
 
   # Store coefficient estimates
