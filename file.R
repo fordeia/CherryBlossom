@@ -129,7 +129,7 @@ for (i in 1:boot_samples) {
   
   boot_data[[i]] <- CBloom4_24[sample(nrow(CBloom4_24), replace = TRUE), ]
   non_sampled_indices <- setdiff(1:nrow(CBloom4_24), boot_data)
-  non_sampled_data<- data[non_sampled_indices,]
+  non_sampled_data<- CBloom4_24[non_sampled_indices,]
 
   # Fit MLR model using selected variables
   mlr_model <- lm(PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, data = boot_data[[i]])
