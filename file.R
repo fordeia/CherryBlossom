@@ -118,6 +118,10 @@ for (i in 1:boot_samples) {
 # Analyze bootstrap results
 # (e.g., frequency of variable inclusion, coefficient distributions)
 
+selected_variables
+mlr_model
+
+
 
 
 
