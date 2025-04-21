@@ -155,6 +155,8 @@ OrigDataSel<-CBloom4_24[,-c(1,3,4)]
 
 boot_results[1,]
 
+Pred<-sum(boot_results[1,1]+boot_results[1,2]*OrigDataSel[1,1]+boot_results[1,3]*OrigDataSel[1,2]+boot_results[1,4]*OrigDataSel[1,3]+boot_results[1,5]*OrigDataSel[1,4])
+
 
 
 
