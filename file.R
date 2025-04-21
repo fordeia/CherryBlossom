@@ -123,6 +123,7 @@ boot_results <- matrix(0, nrow = boot_samples, ncol = length(selected_variables)
 # create an empty list to store the samples
 boot_data <- list()
 oob_data <- list()
+residuals <- list()
 
 for (i in 1:boot_samples) {
   # Bootstrap sample
@@ -135,8 +136,11 @@ for (i in 1:boot_samples) {
   # Fit MLR model using selected variables
   mlr_model <- lm(PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, data = boot_data[[i]])
 
+
   # Store coefficient estimates
   boot_results[i, ] <- coef(mlr_model)
+  residuals[[i]] <- mlr_model$residuals
+
 }
 
 
