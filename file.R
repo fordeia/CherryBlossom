@@ -147,6 +147,13 @@ boot_results[1,]
 
 Pred<-sum(boot_results[1,1]+boot_results[1,2]*OrigDataSel[1,1]+boot_results[1,3]*OrigDataSel[1,2]+boot_results[1,4]*OrigDataSel[1,3]+boot_results[1,5]*OrigDataSel[1,4])
 
+N <- 5
+for (i in 0:(2*N)) {
+   for (j in i:N) {
+        print(paste(i,j,sep=","))
+    }
+}
+
 
 
 
