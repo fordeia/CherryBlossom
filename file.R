@@ -82,16 +82,6 @@ library(car)
 library(boot)
 library(MASS)
 
-# Fit the linear model
-#model_stepwise <- step(lm(PEAK ~., data = CBloom4_24), scope = formula, direction = "forward", k = 2)
-
-# Bootstrapping
-#boot_model <- Boot(model_stepwise, R = 1000)
-
-# Analyze the results
-#summary(boot_model)
-#confint(boot_model, level= .95) # Confidence intervals
-
 # Stepwise variable selection
 data= CBloom4_24
 full_model <- lm(PEAK ~ ., data = data)
