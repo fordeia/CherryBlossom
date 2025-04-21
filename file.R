@@ -147,7 +147,7 @@ for (i in 1:boot_samples) {
 # view the first sample
 head(boot_data[[1]])
 head(oob_data[[1]])
-hist(RMSE)
+hist(as.numeric(RMSE))
 selected_variables
 
 
