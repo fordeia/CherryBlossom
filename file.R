@@ -150,7 +150,7 @@ head(oob_data[[1]])
 hist(as.numeric(RMSE))
 selected_variables
 
-Pred<-()
+Pred<-list()
 OrigDataSel<-CBloom4_24[,-c(1,3,4)]
 
 boot_results[1,]
