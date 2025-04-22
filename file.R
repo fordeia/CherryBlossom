@@ -150,7 +150,7 @@ Pred<-sum(boot_results[1,1]+boot_results[1,2]*OrigDataSel[1,1]+boot_results[1,3]
 
 #for (i in 1:nrow(boot_results) {
    for (j in 1:nrow(OrigDataSel)) {
-        Pred[[j]]<-sum(boot_results[i,1]+boot_results[i,2]*OrigDataSel[j,1]+boot_results[i,3]*OrigDataSel[j,2]+boot_results[i,4]*OrigDataSel[j,3]+boot_results[i,5]*OrigDataSel[j,4])
+        Pred[[i]]<-sum(boot_results[i,1]+boot_results[i,2]*OrigDataSel[j,1]+boot_results[i,3]*OrigDataSel[j,2]+boot_results[i,4]*OrigDataSel[j,3]+boot_results[i,5]*OrigDataSel[j,4])
     }
 #}
 
