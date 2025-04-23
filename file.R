@@ -140,12 +140,13 @@ head(oob_data[[1]])
 hist(as.numeric(RMSE))
 selected_variables
 
-Pred<-list()
+Pred<-matrix(0,nrow(boot_results),nrow(OrigDataSel))
+
 OrigDataSel<-CBloom4_24[,-c(1,3,4)]
 
 for (i in 1:nrow(boot_results)) {
    for (j in 1:nrow(OrigDataSel)) {
-        Pred[[i]]<-sum(boot_results[i,1]+boot_results[i,2]*OrigDataSel[j,1]+boot_results[i,3]*OrigDataSel[j,2]+boot_results[i,4]*OrigDataSel[j,3]+boot_results[i,5]*OrigDataSel[j,4])
+        Pred[[i,j]]<-sum(boot_results[i,1]+boot_results[i,2]*OrigDataSel[j,1]+boot_results[i,3]*OrigDataSel[j,2]+boot_results[i,4]*OrigDataSel[j,3]+boot_results[i,5]*OrigDataSel[j,4])
     }
 }
 
