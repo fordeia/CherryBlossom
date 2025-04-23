@@ -170,18 +170,6 @@ hist(RMSE)
 
 shapiro.test(RMSE)
 
-#SVM Regression
-# Install the e1071 package (if you haven't already)
-#install.packages("e1071")
-# Load the package
-library(e1071)
-
-#Fitting the model
-model <- svm(Y ~ ., data = data, type = "eps_svr", kernel = "radial")
-
-#Making Prediction 
-predictions <- predict(model, test_data)
-
 
 
 
