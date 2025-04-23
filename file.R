@@ -150,7 +150,13 @@ for (i in 1:nrow(boot_results)) {
     }
 }
 
+Actual<-matrix(0,nrow(boot_results),nrow(OrigDataSel))
 
+for (i in 1:nrow(boot_results)) {
+   for (j in 1:nrow(OrigDataSel)) {
+      Actual[[i,j]]<-OrigDataSel[i,j]
+  }
+}
 
 
 
