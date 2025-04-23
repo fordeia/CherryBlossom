@@ -165,6 +165,9 @@ SSE<- rowSums(ErrSq)
 
 MSE<-SSE/nrow(CBloom4_24)
 
+RMSE<-sq(MSE)
+
+
 
 
 
