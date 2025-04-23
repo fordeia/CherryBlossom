@@ -161,6 +161,8 @@ for (i in 1:nrow(boot_results)) {
 residuals<-Actual-Pred
 ErrSq<-residuals^2
 
+SSE<- rowSums(ErrSq)
+
 
 
 
