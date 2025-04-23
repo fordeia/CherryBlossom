@@ -168,6 +168,8 @@ MSE<-SSE/nrow(CBloom4_24)
 RMSE<-sqrt(MSE)
 hist(RMSE)
 
+shapiro.test(RMSE)
+
 
 
 
