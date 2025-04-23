@@ -150,11 +150,11 @@ for (i in 1:nrow(boot_results)) {
     }
 }
 
-Actual<-matrix(0,nrow(boot_results),nrow(OrigDataSel))
+Actual<-matrix(0,nrow(boot_results),nrow(CBloom4_24))
 
 for (i in 1:nrow(boot_results)) {
-   for (j in 1:nrow(OrigDataSel)) {
-      Actual[[i,j]]<-OrigDataSel[i,j]
+   for (j in 1:nrow(CBloom4_24)) {
+      Actual[[i,j]]<-CBloom4_24[j,1]
   }
 }
 
