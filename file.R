@@ -30,6 +30,12 @@ X <- scale(X)
 # Perform PCA
 pca_result <- prcomp(X, scale = FALSE)
 
+# Calculate eigenvalues
+eigenvalues <- sdev^2
+
+# Print the eigenvalues
+print(eigenvalues)
+
 # Access the standard deviations
 sdev <- pca_result$sdev
 
