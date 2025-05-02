@@ -1,4 +1,4 @@
-#1. Loading Packages
+# Loading Packages
 library(randomForest)
 library(ggplot2)
 library(readxl)
@@ -7,10 +7,10 @@ library(caret)
 library(ranger)
 library(stats)
 
-#2. Loading Data
+# Loading Data
 CBloom4_24 <-read.table("Cherryblossom_2004-2024.txt",header =TRUE,sep="\t", fill = TRUE)
 
-#3. Data preparation
+# Data preparation
 # Create a new variable by summing two existing variables
 CBloom4_24$OceTemp <- 2*CBloom4_24$EL.NINO+CBloom4_24$LA.NINA
 
@@ -29,6 +29,14 @@ X <- scale(X)
 #Principle Component Analysis
 # Perform PCA
 pca_result <- prcomp(X, scale = FALSE)
+
+#Scree plot
+install.packages("factoextra")
+library(factoextra)
+fviz_eig(pca_result, addlabels = TRUE)
+
+#Biplot to display the relationship between the PC and independent variables. 
+fviz_pca_var(pca_result, col.var = "black")
 
 # return factor scores for first principal component
 x_result <- pca_result$x[,"PC1"]
