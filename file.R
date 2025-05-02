@@ -30,6 +30,9 @@ X <- scale(X)
 # Perform PCA
 pca_result <- prcomp(X, scale = FALSE)
 
+# Access the standard deviations
+sdev <- pca_result$sdev
+
 #Scree plot
 install.packages("factoextra")
 library(factoextra)
