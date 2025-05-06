@@ -82,6 +82,7 @@ cat("RMSE:", rmse, "\n")
 
 # You can also use other metrics like R-squared
 r_squared <- cor(predictions, y)^2
+r_squared
 # cat("R-squared:", r_squared, "\n")
 # Print the importance of each PCA component
 print(rf_model$finalModel$importance)
