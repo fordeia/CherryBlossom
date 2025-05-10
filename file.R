@@ -95,26 +95,6 @@ loadings
 
 summary(pca_result)
 
-#Multiple Linear Regression ##########################################################
-library(car)
-library(boot)
-library(MASS)
-
-# Stepwise variable selection
-data= CBloom4_24
-full_model <- lm(PEAK ~ ., data = data)
-stepwise_model <- stepAIC(full_model, direction = "both") # Forward or backward
-selected_variables <- coef(stepwise_model)[coef(stepwise_model) != 0]
-
-# Bootstrapping
-set.seed(25)
-  # Fit MLR model using selected variables
-  mlr_model <- lm(data = CBloom4_24, PEAK ~ JAN.RAIN + JAN.TEMP + FEB.TEMP + OceTemp, )
-
-  fit_b<-Boot(mlr_model, R = 1000)
-  summary(fit_b)
-  confint(fit_b, level = .95)
-
 
 
 
