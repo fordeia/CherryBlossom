@@ -208,7 +208,6 @@ CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
 # Separate features (X) and target (y)
 y <- CBloom4_24$PEAK
 x <-CBloom4_24[,-c(1,3,4)]
-x<-as.numeric(unlist(x))
 head(x)
 data <- data.frame(x = x, y = y)
 
