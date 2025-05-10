@@ -215,7 +215,7 @@ data <- data.frame(x = x, y = y)
 predict_model <- function(data, ind) {
   d <- data[ind, ]  # Select bootstrap sample
   model <- lm(y ~ x, data = d)  # Fit the model
-  newdata <- x # Original x values for predictions
+  newdata <- data.frame(JAN.RAIN, JAN.TEMP, FEB.TEMP, OceTemp) # Original x values for predictions
   predictions <- predict(model, newdata = newdata)  # Make predictions
   return(predictions)
 }
