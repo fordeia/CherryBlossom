@@ -188,6 +188,48 @@ hist(RMSE)
 
 shapiro.test(RMSE)
 
+#MLR with prediction #############################################
+# Load necessary libraries
+library(boot)
+
+# Loading Data
+CBloom4_24 <-read.table("Cherryblossom_2004-2024.txt",header =TRUE,sep="\t", fill = TRUE)
+
+# Data preparation
+# Create a new variable by summing two existing variables
+CBloom4_24$OceTemp <- 2*CBloom4_24$EL.NINO+CBloom4_24$LA.NINA
+
+#Dropping unwanted variables
+CBloom4_24<-CBloom4_24[ , -c(1,3, 4, 5, 6,10,11,12,13,14,15,16)]
+
+#Dropping rows with NA
+CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
+
+# Separate features (X) and target (y)
+X <-CBloom4_24[-c(22,23,24,25,26),] 
+y <- CBloom4_24$PEAK
+
+data <- data.frame(x = x, y = y)
+
+# Define the prediction function
+predict_model <- function(data, ind) {
+  d <- data[ind, ]  # Select bootstrap sample
+  model <- lm(y ~ x, data = d)  # Fit the model
+  newdata <- data.frame(x = seq(min(data$x), max(data$x), length.out = 100))  # New x values for predictions
+  predictions <- predict(model, newdata = newdata)  # Make predictions
+  return(predictions)
+}
+
+# Bootstrap the prediction
+bootstrap_predictions <- boot(data, statistic = predict_model, R = 1000) # Perform bootstrap
+
+# Explore the results
+summary(bootstrap_predictions)
+plot(bootstrap_predictions)
+
+# Get prediction intervals
+boot.ci(bootstrap_predictions, type = "bca") # Confidence intervals for predictions
+
 
 
 
