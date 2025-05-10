@@ -221,7 +221,7 @@ predict_model <- function(data, ind) {
 }
 
 # Bootstrap the prediction
-bootstrap_predictions <- Boot(data, statistic = predict_model, R = 1000) # Perform bootstrap
+bootstrap_predictions <- boot(data, statistic = predict_model, R = 1000) # Perform bootstrap
 
 # Explore the results
 summary(bootstrap_predictions)
