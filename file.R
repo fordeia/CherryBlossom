@@ -215,7 +215,7 @@ data <- data.frame(x = x, y = y)
 predict_model <- function(data, ind) {
   d <- data[ind, ]  # Select bootstrap sample
   model <- lm(y ~ x, data = d)  # Fit the model
-  newdata <- data.frame(x = seq(min(data$x), max(data$x), length.out = 100))  # New x values for predictions
+  newdata <- x # Original x values for predictions
   predictions <- predict(model, newdata = newdata)  # Make predictions
   return(predictions)
 }
