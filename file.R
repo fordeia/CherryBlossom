@@ -206,9 +206,9 @@ CBloom4_24<-CBloom4_24[ , -c(1,3, 4, 5, 6,10,11,12,13,14,15,16)]
 CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
 
 # Separate features (X) and target (y)
-X <-CBloom4_24[-c(22,23,24,25,26),] 
 y <- CBloom4_24$PEAK
-
+X <-CBloom4_24[,-c(1,3,4)]
+head(X)
 data <- data.frame(x = x, y = y)
 
 # Define the prediction function
