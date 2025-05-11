@@ -20,6 +20,14 @@ CBloom4_24<-CBloom4_24[ , -c(1,3, 4, 5, 6,10,11,12,13,14,15,16)]
 #Dropping rows with NA
 CBloom4_24<-CBloom4_24[-c(22,23,24,25,26),]
 
+#Test for correlation 
+training_explore<-CBloom4_24
+training_explore$PEAK<-as.numeric(training_explore$PEAK)
+cor_matrix<-abs(cor(training_explore))
+diag(cor_matrix)<-0
+library(corrplot)
+corrplot(cor_matrix, method="square")
+
 # Separate features (X) and target (y)
 X <- CBloom4_24[, -which(names(CBloom4_24) == "PEAK")]  
 y <- CBloom4_24$PEAK
