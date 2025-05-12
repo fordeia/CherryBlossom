@@ -6,6 +6,8 @@ library(tidyverse)
 library(caret)
 library(ranger)
 library(stats)
+library(vip)
+
 
 # Loading Data
 CBloom4_24 <-read.table("Cherryblossom_2004-2024.txt",header =TRUE,sep="\t", fill = TRUE)
@@ -95,9 +97,9 @@ r_squared
 # Print the importance of each PCA component
 print(rf_model$finalModel$importance)
 
-randomForest::varImpPlot(rf_model, 
-                         sort=FALSE, 
-                         main="Variable Importance Plot")
+# Use the vip() function with the trained model object
+gini_plot <- vip(rf_model, feature_names = names(X_pca)[-ncol(X_pca)], geom = "bar")
+
 
 #Percentage contribution of each variable to the pca
 
