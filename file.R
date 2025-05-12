@@ -99,6 +99,7 @@ print(rf_model$finalModel$importance)
 
 # Use the vip() function with the trained model object
 gini_plot <- vip(rf_model, feature_names = names(X_pca)[-ncol(X_pca)], geom = "point")
+gini_plot
 
 
 #Percentage contribution of each variable to the pca
