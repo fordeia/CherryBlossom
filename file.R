@@ -117,6 +117,13 @@ plot(rf_model) # This plots the overall model performance (e.g., accuracy)
 
  plot(variable_importance) # This plots the variable importance scores
 
+#Plotting the loading
+library(factoextra)    
+fviz_contrib(pca_result,
+                 choice = "var",
+                 axes = 1,
+                 top = 5, color = 'darkorange3', barfill  = 'blue4',fill ='blue4')
+
 #Multiple Linear Regression ##########################################################
 library(car)
 library(boot)
