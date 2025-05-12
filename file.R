@@ -124,7 +124,7 @@ fviz_contrib(pca_result,
                  axes = 1,
                  top = 5, color = 'darkorange3', barfill  = 'blue4',fill ='blue4')
 
-a <- df_pca$rotation
+a <- pca_result$rotation
 
 #Most important variables for PC1 and PC2
 library(dplyr)
