@@ -124,6 +124,12 @@ fviz_contrib(pca_result,
                  axes = 1,
                  top = 5, color = 'darkorange3', barfill  = 'blue4',fill ='blue4')
 
+#Most important variables for PC1 and PC2
+library(dplyr)
+library(tibble)
+a %>% as.data.frame %>% rownames_to_column %>% 
+select(rowname, PC1, PC2) %>% arrange(desc(PC1^2+PC2^2)) %>% head(4)
+
 #Multiple Linear Regression ##########################################################
 library(car)
 library(boot)
