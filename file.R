@@ -110,6 +110,8 @@ loadings
 
 summary(pca_result)
 
+plot(rf_model) # This plots the overall model performance (e.g., accuracy)
+
 #Multiple Linear Regression ##########################################################
 library(car)
 library(boot)
