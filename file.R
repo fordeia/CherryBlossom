@@ -115,6 +115,8 @@ plot(rf_model) # This plots the overall model performance (e.g., accuracy)
 #Extracting variable importance
  variable_importance <- varImp(rf_model)
 
+ plot(variable_importance) # This plots the variable importance scores
+
 #Multiple Linear Regression ##########################################################
 library(car)
 library(boot)
