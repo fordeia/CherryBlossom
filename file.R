@@ -95,6 +95,10 @@ r_squared
 # Print the importance of each PCA component
 print(rf_model$finalModel$importance)
 
+randomForest::varImpPlot(rf_model, 
+                         sort=FALSE, 
+                         main="Variable Importance Plot")
+
 #Percentage contribution of each variable to the pca
 
 #correlation between the pca and variables
