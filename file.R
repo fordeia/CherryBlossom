@@ -126,7 +126,14 @@ fviz_contrib(pca_result,
 
 a <- pca_result$rotation
 
-select(rowname, PC1, PC2) %>% arrange(desc(PC1^2+PC2^2)) %>% head(4)
+a
+plot(rf_model) # This plots the overall model performance (e.g., accuracy)
+
+#Extracting variable importance
+ variable_importance <- varImp(rf_model)
+
+ plot(variable_importance) # This plots the variable importance scores
+
 
 #Multiple Linear Regression ##########################################################
 library(car)
