@@ -117,11 +117,18 @@ plot(rf_model) # This plots the overall model performance (e.g., accuracy)
 
  plot(variable_importance) # This plots the variable importance scores
 
-#Plotting the loading
+#Plotting the loading for PC5
 library(factoextra)    
 fviz_contrib(pca_result,
                  choice = "var",
-                 axes = 1,
+                 axes = 5,
+                 top = 5, color = 'darkorange3', barfill  = 'blue4',fill ='blue4')
+
+#Plotting the loading for PC3
+library(factoextra)    
+fviz_contrib(pca_result,
+                 choice = "var",
+                 axes = 3,
                  top = 5, color = 'darkorange3', barfill  = 'blue4',fill ='blue4')
 
 a <- pca_result$rotation
