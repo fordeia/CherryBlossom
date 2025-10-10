@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 
 # Load the cherry blossom dataset
 DataTot = pd.read_excel(r"C:/Users/fordeia/CherryBlossom/bootdataCBloom4_24.xlsx")
@@ -68,3 +68,4 @@ plt.title("Random Forest Feature Importance for Predicting Peak Bloom Dates", fo
 plt.gca().invert_yaxis()  # Highest importance at the top
 plt.tight_layout()
 plt.show()
+
