@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt 
-   
+
 # Load the cherry blossom dataset
 DataTot = pd.read_excel(r"C:/Users/fordeia/CherryBlossom/bootdataCBloom4_24.xlsx")
 data = pd.read_excel(r"C:/Users/fordeia/CherryBlossom/trainCB.xlsx")
@@ -17,7 +17,23 @@ y_train = data['PEAK']
 X_test = Data.drop(columns=['PEAK'])
 y_test = Data['PEAK']
 
-# Create and train the Random Forest Regression model
+# ---------------------------------------------
+# ✅ Drop duplicate rows and corresponding targets
+# ---------------------------------------------
+
+# Drop duplicates in training data
+train_duplicates = X_train.duplicated()
+X_train = X_train[~train_duplicates].reset_index(drop=True)
+y_train = y_train[~train_duplicates].reset_index(drop=True)
+
+# Drop duplicates in test data
+test_duplicates = X_test.duplicated()
+X_test = X_test[~test_duplicates].reset_index(drop=True)
+y_test = y_test[~test_duplicates].reset_index(drop=True)
+
+# ---------------------------------------------
+# Train the Random Forest Regression model
+# ---------------------------------------------
 rf_regressor = RandomForestRegressor(n_estimators=100, random_state=42)
 rf_regressor.fit(X_train, y_train)
 
@@ -52,6 +68,3 @@ plt.title("Random Forest Feature Importance for Predicting Peak Bloom Dates", fo
 plt.gca().invert_yaxis()  # Highest importance at the top
 plt.tight_layout()
 plt.show()
-
-
-
