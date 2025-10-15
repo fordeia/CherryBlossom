@@ -70,6 +70,9 @@ explained_variance <- eigenvalues / sum(eigenvalues) * 100
 # Print percentage variance explained for each PC
 print(round(explained_variance, 2))
 
+# Cumulative percentage variance explained
+cumulative_variance <- cumsum(explained_variance)
+
 # Scree plot
 fviz_eig(pca_result, addlabels = TRUE)
 
@@ -155,6 +158,7 @@ confint(fit_b, level = .95)
 pred_bmlr <- predict(mlr_model)
 rmse_bmlr <- sqrt(mean((CBloom4_24$PEAK - pred_bmlr)^2))
 cat("BMLR RMSE:", rmse_bmlr, "\n")
+
 
 
 
