@@ -20,6 +20,20 @@ library(MASS)
 # -------------------------------
 CBloom4_24 <- read.table("Cherryblossom_2004-2024.txt", header = TRUE, sep = "\t", fill = TRUE)
 
+#--------------------------------
+# Attaching March Temp 
+#--------------------------------
+
+# Create a vector of mean March temperatures (°F) for 2004 to 2024
+mar_temp <- c(42.85, 42.7, 38.75, 41.45, 37.05, 35.35, 40.95, 38.35, 37.6, 40.15, 
+              40.1, 44.8, 41.8, 39.3, 38.75, 36.25, 38.3, 39.7, 41.4, 36.85, 40.6)
+
+# Add MAR.TEMP to CBloom4_24, assuming CBloom4_24 is ordered by year 2004-2024
+CBloom4_24$MAR.TEMP <- mar_temp
+
+# Check to confirm
+head(CBloom4_24)
+
 # -------------------------------
 # Data Preparation
 # -------------------------------
@@ -130,3 +144,4 @@ confint(fit_b, level = .95)
 pred_bmlr <- predict(mlr_model)
 rmse_bmlr <- sqrt(mean((CBloom4_24$PEAK - pred_bmlr)^2))
 cat("BMLR RMSE:", rmse_bmlr, "\n")
+
