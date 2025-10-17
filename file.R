@@ -160,6 +160,56 @@ pred_bmlr <- predict(mlr_model)
 rmse_bmlr <- sqrt(mean((CBloom4_24$PEAK - pred_bmlr)^2))
 cat("BMLR RMSE:", rmse_bmlr, "\n")
 
+# -------------------------------
+# Install and load required packages
+# -------------------------------
+
+# Install only if not already installed
+#if (!require("rpart.plot")) install.packages("rpart.plot", dependencies = TRUE)
+#if (!require("rpart")) install.packages("rpart", dependencies = TRUE)
+#if (!require("caret")) install.packages("caret", dependencies = TRUE)
+
+# Load the packages
+library(rpart)
+library(rpart.plot)
+library(caret)
+
+# -------------------------------
+# Fit Decision Tree Model
+# -------------------------------
+
+# Assuming CBloom4_24 is already loaded and preprocessed
+data <- CBloom4_24
+
+# Fit decision tree regression model
+tree_model <- rpart(PEAK ~ ., data = data, method = "anova")
+
+# Print basic summary
+print(tree_model)
+
+# Visualize the decision tree
+rpart.plot(tree_model,
+           type = 2,
+           extra = 101,
+           fallen.leaves = TRUE,
+           main = "Decision Tree for PEAK Bloom Prediction")
+
+# -------------------------------
+# Evaluate Model Performance
+# -------------------------------
+
+# Predictions on training data
+pred_tree <- predict(tree_model, newdata = data)
+
+# Calculate RMSE
+rmse_tree <- sqrt(mean((data$PEAK - pred_tree)^2))
+cat("Decision Tree RMSE:", rmse_tree, "\n")
+
+# Calculate R-squared
+r2_tree <- cor(data$PEAK, pred_tree)^2
+cat("Decision Tree R-squared:", r2_tree, "\n")
+
+
 
 
 
