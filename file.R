@@ -262,6 +262,21 @@ rpart.plot(tree_loocv$finalModel,
            fallen.leaves = TRUE,
            main = "LOOCV Decision Tree for PEAK Bloom Prediction")
 
+library(ggplot2)
+
+# Assuming tree_loocv$pred contains the LOOCV predictions with columns 'pred' and 'obs'
+ggplot(tree_loocv$pred, aes(x = obs, y = pred)) +
+  geom_point(color = "#0099f9", size = 2) +
+  geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
+  theme_minimal() +
+  labs(
+    title = "Predicted vs Observed Values (LOOCV - Decision Tree)",
+    x = "Observed PEAK",
+    y = "Predicted PEAK"
+  )
+
+
+
 
 
 
