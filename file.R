@@ -209,6 +209,59 @@ cat("Decision Tree RMSE:", rmse_tree, "\n")
 r2_tree <- cor(data$PEAK, pred_tree)^2
 cat("Decision Tree R-squared:", r2_tree, "\n")
 
+# -------------------------------
+# Load required libraries
+# -------------------------------
+library(rpart)
+library(caret)
+library(rpart.plot)
+
+# -------------------------------
+# Prepare data
+# -------------------------------
+data <- CBloom4_24  # assuming this is already loaded and cleaned
+data$PEAK <- as.numeric(data$PEAK)  # ensure target is numeric
+
+# -------------------------------
+# Set up LOOCV with caret
+# -------------------------------
+set.seed(123)
+train_control <- trainControl(method = "LOOCV")
+
+# -------------------------------
+# Train decision tree with LOOCV
+# -------------------------------
+tree_loocv <- train(
+  PEAK ~ ., 
+  data = data,
+  method = "rpart",
+  trControl = train_control,
+  tuneLength = 10  # Try multiple cp values
+)
+
+# -------------------------------
+# Print model summary
+# -------------------------------
+print(tree_loocv)
+
+# -------------------------------
+# Evaluate model performance
+# -------------------------------
+rmse_loocv <- sqrt(mean((tree_loocv$pred$pred - tree_loocv$pred$obs)^2))
+r2_loocv <- cor(tree_loocv$pred$pred, tree_loocv$pred$obs)^2
+
+cat("LOOCV Decision Tree RMSE:", rmse_loocv, "\n")
+cat("LOOCV Decision Tree R-squared:", r2_loocv, "\n")
+
+# -------------------------------
+# Visualize final decision tree
+# -------------------------------
+rpart.plot(tree_loocv$finalModel,
+           type = 2,
+           extra = 101,
+           fallen.leaves = TRUE,
+           main = "LOOCV Decision Tree for PEAK Bloom Prediction")
+
 
 
 
