@@ -42,7 +42,7 @@ head(CBloom4_24)
 # -------------------------------
 # Data Preparation
 # -------------------------------
-CBloom4_24$OceTemp <- 2 * CBloom4_24$EL.NINO + CBloom4_24$LA.NINA
+CBloom4_24$OceTemp <- ifelse(CBloom4_24$EL.NINO == 1, 2, ifelse(CBloom4_24$LA.NINA == 1, 0, 1))
 CBloom4_24 <- CBloom4_24[, -c(1,3, 4, 5, 6,10,11,12,13,14,15,16)]
 CBloom4_24 <- CBloom4_24[-c(22,23,24,25,26),]
 
@@ -274,6 +274,7 @@ ggplot(tree_loocv$pred, aes(x = obs, y = pred)) +
     x = "Observed PEAK",
     y = "Predicted PEAK"
   )
+
 
 
 
