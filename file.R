@@ -130,11 +130,11 @@ plot(rf_model)
 variable_importance <- varImp(rf_model)
 plot(variable_importance)
 
-# Loadings for PC5
+# Loadings for PC1
 fviz_contrib(pca_result, choice = "var", axes = 1, top = 5,
              color = 'darkorange3', barfill = 'blue4', fill = 'blue4')
 
-# Loadings for PC3
+# Loadings for PC2
 fviz_contrib(pca_result, choice = "var", axes = 2, top = 5,
              color = 'darkorange3', barfill = 'blue4', fill = 'blue4')
 
@@ -274,6 +274,7 @@ ggplot(tree_loocv$pred, aes(x = obs, y = pred)) +
     x = "Observed PEAK",
     y = "Predicted PEAK"
   )
+
 
 
 
